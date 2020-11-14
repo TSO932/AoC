@@ -7,17 +7,21 @@ let runProgram (inputString:string, inputValue) =
     while intcode.[index] <> 99 do
         
         let opcode = intcode.[index] - 100 * (intcode.[index] / 100)
-        
+                   
         let immediateModeSettings =
             let digits = (string intcode.[index]).PadLeft(5, '0')
             digits.[0..digits.Length - 3] |> Seq.map (fun c -> if c = '1' then true else false) |> List.ofSeq |> List.rev
-           
+        
+        let indexRef = ref index
+        let getParameterValue(position:int) =
+            if immediateModeSettings.[position - 1] then intcode.[!indexRef + position] else intcode.[intcode.[!indexRef + position]]
+            
         if opcode = 1 then
-            intcode.[intcode.[index + 3]] <- (if immediateModeSettings.[0] then intcode.[index + 1] else intcode.[intcode.[index + 1]]) + if immediateModeSettings.[1] then intcode.[index + 2] else intcode.[intcode.[index + 2]]
+            intcode.[intcode.[index + 3]] <- getParameterValue(1) + getParameterValue(2)
             index <- index + 4
 
         elif opcode = 2 then
-            intcode.[intcode.[index + 3]] <- (if immediateModeSettings.[0] then intcode.[index + 1] else intcode.[intcode.[index + 1]]) * if immediateModeSettings.[1] then intcode.[index + 2] else intcode.[intcode.[index + 2]]
+            intcode.[intcode.[index + 3]] <- getParameterValue(1) * getParameterValue(2)
             index <- index + 4
 
         elif opcode = 3 then
@@ -25,27 +29,23 @@ let runProgram (inputString:string, inputValue) =
             index <- index + 2
 
         elif opcode = 4 then
-            inputOutput <- if immediateModeSettings.[0] then intcode.[index + 1] else intcode.[intcode.[index + 1]]
+            inputOutput <- getParameterValue(1)
             index <- index + 2
 
         elif opcode = 5 then
-            index <- if (if immediateModeSettings.[0] then intcode.[index + 1] else intcode.[intcode.[index + 1]]) <> 0 then
-                        if immediateModeSettings.[1] then intcode.[index + 2] else intcode.[intcode.[index + 2]]
-                     else
-                        index + 3
+            index <- if getParameterValue(1) <> 0 then getParameterValue(2)
+                     else index + 3
                 
         elif opcode = 6 then
-            index <- if (if immediateModeSettings.[0] then intcode.[index + 1] else intcode.[intcode.[index + 1]]) = 0 then
-                        if immediateModeSettings.[1] then intcode.[index + 2] else intcode.[intcode.[index + 2]]
-                     else
-                        index + 3
+            index <- if getParameterValue(1) = 0 then getParameterValue(2)
+                     else index + 3
 
         elif opcode = 7 then
-            intcode.[intcode.[index + 3]] <- if (if immediateModeSettings.[0] then intcode.[index + 1] else intcode.[intcode.[index + 1]]) < (if immediateModeSettings.[1] then intcode.[index + 2] else intcode.[intcode.[index + 2]]) then 1 else 0
+            intcode.[intcode.[index + 3]] <- if getParameterValue(1) < getParameterValue(2) then 1 else 0
             index <- index + 4
             
         elif opcode = 8 then
-            intcode.[intcode.[index + 3]] <- if (if immediateModeSettings.[0] then intcode.[index + 1] else intcode.[intcode.[index + 1]]) = (if immediateModeSettings.[1] then intcode.[index + 2] else intcode.[intcode.[index + 2]]) then 1 else 0
+            intcode.[intcode.[index + 3]] <- if getParameterValue(1) = getParameterValue(2) then 1 else 0
             index <- index + 4
             
     printfn "%i" inputOutput 
