@@ -1,4 +1,3 @@
-//F# Compiler for F# 4.0 (Open Source Edition)
 let runProgram(code:string) =
     let calc(char, layer) = layer |> Seq.where (fun t -> fst t = char) |> Seq.head |> snd
     printfn "%A" (code |> Seq.chunkBySize (25 * 6) |> Seq.sortBy (fun a -> (a |> Seq.filter (fun c -> c ='0') |> Seq.length)) |> Seq.head |> Seq.countBy (fun c -> c) |> (fun a -> calc('1',a) * calc('2',a)))
