@@ -12,45 +12,34 @@ if isDebug then printfn "%A" matrix
 
 let countAsteroids(y, x) = 
 
-    let getDiagonals =
-        let mutable upperRight = false
-        let mutable lowerLeft = false
-        let mutable upperLeft = false
-        let mutable lowerRight = false
+    let up = matrix.[0..(y - 1), x] |> Array.exists ((=) '#') |> (fun b -> if b = true then 1 else 0)
+    let down = matrix.[(y + 1).., x] |> Array.exists ((=) '#') |> (fun b -> if b = true then 1 else 0)
+    let left = matrix.[y, 0..(x - 1)] |> Array.exists ((=) '#') |> (fun b -> if b = true then 1 else 0)
+    let right = matrix.[y, (x + 1)..] |> Array.exists ((=) '#') |> (fun b -> if b = true then 1 else 0)
+    
+    let mutable lowerRight = 0
+    for i in 1 .. min (arrays.Length - y - 1) (arrays.[0].Length - x - 1) do
+        if matrix.[y + i, x + i] = '#' then
+            lowerRight <- 1
 
-        for i in 1 .. min (arrays.Length - y - 2) (arrays.[0].Length - x - 2) do
-            if matrix.[y + i, x + i] = '#' then
-                lowerRight <- true
-            
-        for i in 1 .. min (y - 1) x do
-            if matrix.[y - i, x - i] = '#' then
-                upperLeft <- true
+    let mutable upperLeft = 0        
+    for i in 1 .. min y x do
+        if matrix.[y - i, x - i] = '#' then
+            upperLeft <- 1
                    
-        for i in 1 .. min y (arrays.[0].Length - x - 2) do
-            if matrix.[y - i, x + i] = '#' then
-                upperRight <- true
-            
-            
-        for i in 1 .. min (arrays.Length - y - 2) (x - 1) do
-            if matrix.[y + i, x - i] = '#' then
-                lowerLeft <- true
+    let mutable upperRight = 0
+    for i in 1 .. min y (arrays.[0].Length - x - 1) do
+        if matrix.[y - i, x + i] = '#' then
+            upperRight <- 1
 
-        if isDebug then printfn "y %i x %i UR %b LL %b UL %b LR %b" y x upperRight lowerLeft upperLeft lowerRight
-        
-//        let mutable upperRightZXX = false
-  //      for v in (y + 1)..(arrays.Length - 1) do
-    //        for h in (x + 1)..(arrays.[0].Length - 1) do
-      //         if matrix.[v,h] = '#' then
-        //           diag <- true                   
-        
-    let up = matrix.[0..(y - 1), x] |> Array.exists ((=) '#')
-    let down = matrix.[(y + 1).., x] |> Array.exists ((=) '#')
-    let left = matrix.[y, 0..(x - 1)] |> Array.exists ((=) '#')
-    let right = matrix.[y, (x + 1)..] |> Array.exists ((=) '#')
-    if matrix.[y,x] = '#' then (if up then 1 else 0) + (if down then 1 else 0) + (if left then 1 else 0) + (if right then 1 else 0) else 0
+    let mutable lowerLeft = 0
+    for i in 1 .. min (arrays.Length - y - 1) x do
+        if matrix.[y + i, x - i] = '#' then
+            lowerLeft <- 1
+
+    if matrix.[y,x] = '#' then up + down + left + right + upperRight + upperLeft + lowerLeft + lowerRight else 0
 
 let countedAsteroids = matrix |> Array2D.mapi (fun y x a -> countAsteroids(y, x)) |> Seq.cast<int>
 let answer = countedAsteroids |> Seq.findIndex ((=) (countedAsteroids |> Seq.max)) |> fun i -> (i / arrays.[0].Length, i - (i / arrays.[0].Length) * arrays.[0].Length)
 
-printfn "%A" countedAsteroids
 printfn "%O" answer
