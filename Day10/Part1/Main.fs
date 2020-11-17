@@ -1,7 +1,3 @@
-open System
-printfn "Hello, World!"
-
-
 let a = ".#..#
 .....
 #####
@@ -18,6 +14,8 @@ let countAsteroids(y, x) =
     let right = matrix.[y, (x + 1)..] |> Array.exists ((=) '#')
     if matrix.[y,x] = '#' then (if up then 1 else 0) + (if down then 1 else 0) + (if left then 1 else 0) + (if right then 1 else 0) else 0
 
-let matrix3 = matrix |> Array2D.mapi (fun y x a -> countAsteroids(y, x))
+let countedAsteroids = matrix |> Array2D.mapi (fun y x a -> countAsteroids(y, x)) |> Seq.cast<int>
+let answer = countedAsteroids |> Seq.findIndex ((=) (countedAsteroids |> Seq.max)) |> fun i -> (i / arrays.[0].Length, i - (i / arrays.[0].Length) * arrays.[0].Length)
 
-printfn "%A" matrix3
+printfn "%A" countedAsteroids
+printfn "%O" answer
