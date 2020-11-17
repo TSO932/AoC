@@ -18,15 +18,31 @@ let countAsteroids(y, x) =
         let mutable upperLeft = false
         let mutable lowerRight = false
 
-        for i in 0 .. (min (arrays.Length - y - 2) (arrays.[0].Length - 1) - x - 2) do
-               if matrix.[y + i, x + i] = '#' then
-                   lowerRight <- true
- 
-        for i in 0 .. min (y - 1) (x - 1) do
-               if matrix.[y - i, x - i] = '#' then
-                   upperLeft <- true
+        for i in 1 .. min (arrays.Length - y - 2) (arrays.[0].Length - x - 2) do
+            if matrix.[y + i, x + i] = '#' then
+                lowerRight <- true
+            
+        for i in 1 .. min (y - 1) (x - 1) do
+            if matrix.[y - i, x - i] = '#' then
+                upperLeft <- true
+                   
+        for i in 1 .. min (y - 1) (arrays.[0].Length - x - 2) do
+            
+            if matrix.[y - i, x + i] = '#' then
+                upperRight <- true
+            
+            
+        for i in 1 .. min (arrays.Length - y - 2) (x - 1) do
+            if matrix.[y + i, x - i] = '#' then
+                lowerLeft <- true
 
-        if isDebug then printfn "y %i x %i ur %b bl %b ul %b br %b" y x upperRight lowerLeft upperLeft lowerLeft    
+        if isDebug then printfn "y %i x %i ur %b bl %b ul %b br %b" y x upperRight lowerLeft upperLeft lowerLeft
+        
+//        let mutable upperRightZXX = false
+  //      for v in (y + 1)..(arrays.Length - 1) do
+    //        for h in (x + 1)..(arrays.[0].Length - 1) do
+      //         if matrix.[v,h] = '#' then
+        //           diag <- true                   
         
     let up = matrix.[0..(y - 1), x] |> Array.exists ((=) '#')
     let down = matrix.[(y + 1).., x] |> Array.exists ((=) '#')
