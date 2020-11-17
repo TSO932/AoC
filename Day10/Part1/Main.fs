@@ -4,10 +4,30 @@ let a = ".#..#
 ....#
 ...##"
 
+let isDebug = true
 let arrays = a.Split '\010' |> Seq.map (fun a -> Array.ofSeq a) |> Array.ofSeq
 let matrix = Array2D.init arrays.Length arrays.[0].Length (fun i j -> arrays.[i].[j])
 
+if isDebug then printfn "%A" matrix
+
 let countAsteroids(y, x) = 
+
+    let getDiagonals =
+        let mutable upperRight = false
+        let mutable lowerLeft = false
+        let mutable upperLeft = false
+        let mutable lowerRight = false
+
+        for i in 0 .. (min (arrays.Length - y - 2) (arrays.[0].Length - 1) - x - 2) do
+               if matrix.[y + i, x + i] = '#' then
+                   lowerRight <- true
+ 
+        for i in 0 .. min (y - 1) (x - 1) do
+               if matrix.[y - i, x - i] = '#' then
+                   upperLeft <- true
+
+        if isDebug then printfn "y %i x %i ur %b bl %b ul %b br %b" y x upperRight lowerLeft upperLeft lowerLeft    
+        
     let up = matrix.[0..(y - 1), x] |> Array.exists ((=) '#')
     let down = matrix.[(y + 1).., x] |> Array.exists ((=) '#')
     let left = matrix.[y, 0..(x - 1)] |> Array.exists ((=) '#')
