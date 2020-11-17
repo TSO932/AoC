@@ -22,12 +22,11 @@ let countAsteroids(y, x) =
             if matrix.[y + i, x + i] = '#' then
                 lowerRight <- true
             
-        for i in 1 .. min (y - 1) (x - 1) do
+        for i in 1 .. min (y - 1) x do
             if matrix.[y - i, x - i] = '#' then
                 upperLeft <- true
                    
-        for i in 1 .. min (y - 1) (arrays.[0].Length - x - 2) do
-            
+        for i in 1 .. min y (arrays.[0].Length - x - 2) do
             if matrix.[y - i, x + i] = '#' then
                 upperRight <- true
             
@@ -36,7 +35,7 @@ let countAsteroids(y, x) =
             if matrix.[y + i, x - i] = '#' then
                 lowerLeft <- true
 
-        if isDebug then printfn "y %i x %i ur %b bl %b ul %b br %b" y x upperRight lowerLeft upperLeft lowerLeft
+        if isDebug then printfn "y %i x %i UR %b LL %b UL %b LR %b" y x upperRight lowerLeft upperLeft lowerRight
         
 //        let mutable upperRightZXX = false
   //      for v in (y + 1)..(arrays.Length - 1) do
