@@ -6,7 +6,7 @@ let findBestAsteroid(spaceMap:string) =
     if isDebug then printfn "%A" matrix
 
     let countAsteroids(y, x) = 
-        let angles = matrix |> Array2D.mapi (fun v h c -> if c = '#' && not (y = v && x = h) then System.Math.Atan2(float (y - v), float (x - h)) else 0.0)
+        let angles = matrix |> Array2D.mapi (fun v h c -> if c = '#' && not (y = v && x = h) then System.Math.Atan2(float (y - v), float (x - h)) else -77.77)
         angles |> Seq.cast<double> |> Seq.distinct |> Seq.length
 
     let countedAsteroids = matrix |> Array2D.mapi (fun y x c -> if c = '#' then countAsteroids(y, x) else 0) |> Seq.cast<int>
