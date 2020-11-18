@@ -6,11 +6,11 @@ let findBestAsteroid(spaceMap:string) =
     if isDebug then printfn "%A" matrix
 
     let countAsteroids(y, x) = 
-        let angles = matrix |> Array2D.mapi (fun v h c -> if c = '#' && not (y = v && x = h) then System.Math.Atan2(float (y - v), float (x - h)) else -77.77)
-        angles |> Seq.cast<double> |> Seq.distinct |> Seq.length
+        let angles = matrix |> Array2D.mapi (fun v h c -> (c = '#' && not (y = v && x = h), System.Math.Atan2(float (y - v), float (x - h))))
+        angles |> Seq.cast<bool*double> |> Seq.filter (fun x -> fst x) |> Seq.distinct |> Seq.length
 
     let countedAsteroids = matrix |> Array2D.mapi (fun y x c -> if c = '#' then countAsteroids(y, x) else 0) |> Seq.cast<int>
-    let asteroidCount = (countedAsteroids |> Seq.max) - 1
+    let asteroidCount = (countedAsteroids |> Seq.max)
     let location = countedAsteroids |> Seq.findIndex ((=) (countedAsteroids |> Seq.max)) |> fun i -> (i - (i / arrays.[0].Length) * arrays.[0].Length, i / arrays.[0].Length)
     printfn "location %O count %i" location asteroidCount
 
@@ -74,3 +74,27 @@ findBestAsteroid(".#..##.###...#######
 #.#.#.#####.####.###
 ###.##.####.##.#..##")
 
+findBestAsteroid("##.##..#.####...#.#.####
+##.###..##.#######..##..
+..######.###.#.##.######
+.#######.####.##.#.###.#
+..#...##.#.....#####..##
+#..###.#...#..###.#..#..
+###..#.##.####.#..##..##
+.##.##....###.#..#....#.
+########..#####..#######
+##..#..##.#..##.#.#.#..#
+##.#.##.######.#####....
+###.##...#.##...#.######
+###...##.####..##..#####
+##.#...#.#.....######.##
+.#...####..####.##...##.
+#.#########..###..#.####
+#.##..###.#.######.#####
+##..##.##...####.#...##.
+###...###.##.####.#.##..
+####.#.....###..#.####.#
+##.####..##.#.##..##.#.#
+#####..#...####..##..#.#
+.##.##.##...###.##...###
+..###.########.#.###..#.")
