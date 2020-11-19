@@ -1,4 +1,4 @@
-let isDebug = true
+let isDebug = false
     
 let vaporise(spaceMap:string,stationLocation) =
     let arrays = spaceMap.Split ([|'\010'; '\013'|], System.StringSplitOptions.RemoveEmptyEntries) |> Seq.map (Array.ofSeq) |> Array.ofSeq
@@ -20,7 +20,8 @@ let vaporise(spaceMap:string,stationLocation) =
         if Seq.length asteroids = 1 || killCount = 199 then
             let lastZap = zapAsteroid((angle,distance), asteroids)
             let lastAsteroid = matrixOfAngles |> Array2D.mapi (fun v h (a,b) -> a && fst (fst lastZap) = fst b && snd (fst lastZap) = abs (h - fst stationLocation) + abs (v - snd stationLocation))
-            Seq.cast<bool> lastAsteroid |> Seq.findIndex ((=) true) |> fun i -> (i - (i / arrays.[0].Length) * arrays.[0].Length, i / arrays.[0].Length)
+            let coords = Seq.cast<bool> lastAsteroid |> Seq.findIndex ((=) true) |> fun i -> (i - (i / arrays.[0].Length) * arrays.[0].Length, i / arrays.[0].Length)
+            fst coords * 100 + snd coords        
         else
            zapAsteroids((zapAsteroid((angle,distance), asteroids)), killCount + 1)
            
