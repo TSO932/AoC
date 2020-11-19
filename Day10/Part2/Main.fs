@@ -1,24 +1,33 @@
-let isDebug = true
+let isDebug = false
     
 let vaporise(spaceMap:string,stationLocation) =
     let arrays = spaceMap.Split '\010' |> Seq.map (fun a -> Array.ofSeq a) |> Array.ofSeq
     let matrix = Array2D.init arrays.Length arrays.[0].Length (fun i j -> arrays.[i].[j])
-
+    let matrixOfAngles = matrix |> Array2D.mapi (fun v h c -> (c = '#' && not (v = snd stationLocation && h = fst stationLocation), (System.Math.Atan2(float (h - fst stationLocation),float (v - snd stationLocation)), abs (h - fst stationLocation) + abs (v - snd stationLocation))))
+    let seqOfAngles = matrixOfAngles |> Seq.cast<bool*(double*int)> |> Seq.filter (fun x -> fst x) |> Seq.map (snd)
+    
     if isDebug then printfn "%A" matrix
+    if isDebug then printfn "%A" matrixOfAngles
 
-    let matrixOfAngles = matrix |> Array2D.mapi (fun v h c -> (c = '#' && not (v = snd stationLocation && h = fst stationLocation), (System.Math.Atan2(float (h - fst stationLocation),float (v - snd stationLocation)), h - fst stationLocation)))
+    let zapAsteroid((lastAngle,_), asteroidMap) = 
+        let smallerAngles = asteroidMap |> Seq.filter (fun x -> fst x < lastAngle) 
+        let nextAngle = (if Seq.length smallerAngles > 0 then smallerAngles else asteroidMap) |> Seq.maxBy fst |> fst
+        let nextDistance = asteroidMap |> Seq.filter (fun x -> fst x = nextAngle) |> Seq.minBy (fun x -> abs (snd x)) |> snd
+        if isDebug then printfn "angle %f distance %i count %i  zap %A" nextAngle nextDistance (Seq.length asteroidMap) (asteroidMap |> Seq.filter (fun x -> (x = (nextAngle, nextDistance))))
+        ((nextAngle, nextDistance), asteroidMap |> Seq.filter (fun x -> not (x = (nextAngle, nextDistance))))
+     
+    let rec zapAsteroids(((angle,distance), asteroids), killCount) = 
+        if Seq.length asteroids = 1 || killCount = 199 then
+            let lastZap = zapAsteroid((angle,distance), asteroids)
+            let lastAsteroid = matrixOfAngles |> Array2D.mapi (fun v h (a,b) -> a && fst (fst lastZap) = fst b && snd (fst lastZap) = abs (h - fst stationLocation) + abs (v - snd stationLocation))
+            Seq.cast<bool> lastAsteroid |> Seq.findIndex ((=) true) |> fun i -> (i - (i / arrays.[0].Length) * arrays.[0].Length, i / arrays.[0].Length)
+        else
+           zapAsteroids((zapAsteroid((angle,distance), asteroids)), killCount + 1)
+           
+    printfn "%A" (zapAsteroids(((double 4.0, 0), seqOfAngles), 0))
     
-    let mutable firingAngle = float 3.141592654f
-
-    let angleWithMostAsteroids = matrixOfAngles |> Seq.cast<bool*(double*int)> |> Seq.filter (fun x -> fst x) |> Seq.groupBy (fun x -> fst (snd x)) |> Seq.map (fun (a,b) -> (a, Seq.length b)) |> Seq.maxBy snd |> fst
-    let nextTarget = matrixOfAngles |> Seq.cast<bool*(double*int)> |> Seq.filter (fun x -> fst x) |> Seq.maxBy snd
-    let mapWithTargetRemoved = matrixOfAngles |> Seq.cast<bool*(double*int)> |> Seq.filter (fun x -> not (x = nextTarget))
-    
-    //let asteroidsInLineOfFire = matrixOfAngles |> Array2D.mapi (fun y x c -> if fst c && snd c = angleWithMostAsteroids then (true, (y, x)) else (false, (0, 0))) |> Seq.cast<bool*(int*int)> |> Seq.filter (fun x -> fst x) |> Seq.map snd
-    //let furthestAsteroid = asteroidsInLineOfFire |> Seq.map (fun (y, x) -> x * 100 + y, abs (x - fst stationLocation) + abs (y - snd stationLocation)) |> Seq.maxBy snd |> fst
-
-    //if isDebug then printfn "furthestAsteroid %A angleWithMostAsteroids %A asteroidsInLineOfFire %A matrixOfAngles %A" furthestAsteroid angleWithMostAsteroids asteroidsInLineOfFire matrixOfAngles
-    printfn "%A %A" nextTarget matrixOfAngles
+vaporise(".#
+##",(1,0))
 
 vaporise(".#....#####...#..
 ##...##.#####..##
@@ -26,7 +35,7 @@ vaporise(".#....#####...#..
 ..#.....X...###..
 ..#.#.....#....##",(8,3))
 
-vaporise(".#..##.###...#######
+if not isDebug then vaporise(".#..##.###...#######
 ##.############..##.
 .#.######.########.#
 .###.#######.####.#.
