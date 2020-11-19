@@ -1,10 +1,10 @@
-let isDebug = false
+let isDebug = true
     
 let vaporise(spaceMap:string,stationLocation) =
-    let arrays = spaceMap.Split '\010' |> Seq.map (fun a -> Array.ofSeq a) |> Array.ofSeq
+    let arrays = spaceMap.Split '\010' |> Seq.map (Array.ofSeq) |> Array.ofSeq
     let matrix = Array2D.init arrays.Length arrays.[0].Length (fun i j -> arrays.[i].[j])
     let matrixOfAngles = matrix |> Array2D.mapi (fun v h c -> (c = '#' && not (v = snd stationLocation && h = fst stationLocation), (System.Math.Atan2(float (h - fst stationLocation),float (v - snd stationLocation)), abs (h - fst stationLocation) + abs (v - snd stationLocation))))
-    let seqOfAngles = matrixOfAngles |> Seq.cast<bool*(double*int)> |> Seq.filter (fun x -> fst x) |> Seq.map (snd)
+    let seqOfAngles = matrixOfAngles |> Seq.cast<bool*(double*int)> |> Seq.filter (fst) |> Seq.map (snd)
     
     if isDebug then printfn "%A" matrix
     if isDebug then printfn "%A" matrixOfAngles
