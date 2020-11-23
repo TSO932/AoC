@@ -1,5 +1,5 @@
 let isDebug = false
-let isShowAllOutputs = false
+let isPartOne = true
 
 let rotate(((x0, y0), currentDirection), turnInstruction) =
     
@@ -12,7 +12,7 @@ let rotate(((x0, y0), currentDirection), turnInstruction) =
         match turnInstruction with
         | 0 -> resetCircle(currentDirection - 90)
         | 1 -> resetCircle(currentDirection + 90)
-        | _ -> invalidArg "Invalid turnInstruction input to rotate function. Expected 0 ot 1" (string turnInstruction)
+        | _ -> invalidArg "Invalid turnInstruction input to rotate function. Expected 0 or 1" (string turnInstruction)
        
     let (x1, y1) =
         match newDirection with
@@ -20,7 +20,7 @@ let rotate(((x0, y0), currentDirection), turnInstruction) =
         |  90 -> (x0 + 1, y0)
         | 180 -> (x0, y0 + 1)
         | 270 -> (x0 - 1, y0)
-        |   _ -> invalidArg "Invalid newDirection input to rotate function. Expected 0 ot 1" (string newDirection)
+        |   _ -> invalidArg "Invalid newDirection input to rotate function. Expected 0, 90, 180 or 270" (string newDirection)
         
     ((x1, y1), newDirection)
 
@@ -33,14 +33,15 @@ if isDebug then
     printfn "left  right %A" (rotate(((0, 0), 270),  1))
     printfn "down  right %A" (rotate(((0, 0), 180),  1))
     printfn "right right %A" (rotate(((0, 0),  90),  1))
-    printfn "NE    right %A" (rotate(((0, 0),  45),  1))
     printfn "way over    %A" (rotate(((0, 0), 810),  1))
     printfn "way under   %A" (rotate(((0, 0),-540),  1))
-    try
-        printfn "down  wrong %A" (rotate(((0, 0),  90), -2))
-    with
-    | :? System.ArgumentException as ex -> 
-          printfn "%s" ex.Message
+    
+    try printfn "NE    right %A" (rotate(((0, 0),  45),  1))
+    with | :? System.ArgumentException as ex -> printfn "%s" ex.Message
+          
+    try printfn "down  wrong %A" (rotate(((0, 0),  90), -2))
+    with | :? System.ArgumentException as ex -> printfn "%s" ex.Message
+
 
 let printOutput(locationsPainted) =
     let locationsToPlot = locationsPainted |> Map.toSeq |> Seq.map fst
@@ -60,7 +61,7 @@ let printOutput(locationsPainted) =
     printfn  "all %i white %i" locationsPainted.Count (locationsPainted |> Map.filter (fun _ v -> v = 1L) |> Map.count)
 
 let runTestProgram =
-    let instructions = [(1L,1) ; (0L,0) ; (0L,0) ; (1L,1) ; (1L,1) ; (0L,0) ; (0L,0) ; (1L,1) ; (1L,1) ; (0L,1) ; (1L,0) ; (0L,1) ; (1L,0) ; (0L,1) ; (1L,0) ; (0L,0) ; (1L,1) ; (0L,0) ; (1L,1) ; (0L,0) ; (1L,1)  ; (0L,1) ; (0L,1) ; (1L,0) ; (1L,1) ; (0L,0) ; (0L,0) ; (1L,1) ; (1L,0)]
+    let instructions = [(1L,1) ; (0L,0) ; (0L,0) ; (1L,1) ; (1L,1) ; (0L,0) ; (0L,0) ; (1L,1) ; (1L,1) ; (0L,1) ; (1L,0) ; (0L,1) ; (1L,0) ; (0L,1) ; (1L,0) ; (0L,0) ; (1L,1) ; (0L,0) ; (1L,1) ; (0L,0) ; (1L,1)  ; (0L,1) ; (0L,1) ; (1L,0) ; (1L,1) ; (0L,0) ; (0L,0) ; (1L,1) ; (1L,0) ; (0L,1) ; (0L,0); (0L,0); (1L,1) ; (0L,0); (0L,0); (1L,1); (1L,1); (0L,0); (0L,0); (1L,1); (1L,1); (0L,1) ; (1L,0); (0L,1) ; (1L,0); (0L,1) ; (1L,0); (0L,1) ; (1L,0); (0L,0); (0L,0);(1L,1);(1L,1);(0L,0); (0L,0);(1L,1);(1L,1)]
     let mutable currentLocation = ((0, 0), 0)
     let mutable locationsPainted = Map.empty
 
@@ -77,10 +78,9 @@ let runProgram (inputString:string) =
     let intcode:(int64 array) = Array.concat [|inputString.Split ',' |> Array.map System.Int64.Parse; (Array.zeroCreate 10000)|] 
     let mutable index = 0
 
-
     let mutable currentLocation = ((0, 0), 0)
     let mutable isPaintOutput = true
-    let mutable locationsPainted = Map.empty
+    let mutable locationsPainted = Map.empty |> Map.add (fst currentLocation) (if isPartOne then 0L else 1L)
 
     while intcode.[index] <> 99L && locationsPainted.Count < 10000 do
 
