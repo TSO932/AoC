@@ -15,6 +15,6 @@ printfn "%b" (isWinningAtSnap(11)) //true (snap)
 printfn "%b" (isWinningAtSnap(12)) //true (not snap)
 printfn "%b" (isWinningAtSnap(123455))  //final pair matches
 
-let range = Set.ofSeq [136818..685979]
+let range = Set.ofSeq [1..2]  // paste input values over the dummy values using the .. notation for a sequence
 
 printfn "%O" (range |> Set.filter (fun x -> isNotDecreasing x) |> Set.filter (fun x -> isWinningAtSnap x) |> Seq.length)
