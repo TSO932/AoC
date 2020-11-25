@@ -1,18 +1,11 @@
-
 let runSimulation(positions, itterations) =
 
     let mutable moons = positions |> List.map (fun p -> (p, (0, 0, 0)))
 
-    let gravityPair((x0, y0, z0), (x1, y1, z1)) =
-
-        let comp(i, j) =
-            if   i > j then -1
-            elif i < j then  1
-            else 0
-
-        (comp(x0, x1), comp(y0, y1), comp(z0, z1))
-
     let applyGravity(moon) =
+        let gravityPair((x0:int, y0:int, z0:int), (x1:int, y1:int, z1:int)) =
+                (x1.CompareTo x0, y1.CompareTo y0, z1.CompareTo z0)
+
         let sumUp((x0, y0, z0), (x1, y1, z1)) = (x0 + x1, y0 + y1, z0 + z1)
     
         let velocity = moons |> List.map (fun m -> gravityPair(fst moon, fst m)) |>  List.fold (fun mm m -> sumUp(mm, m)) (snd moon)
