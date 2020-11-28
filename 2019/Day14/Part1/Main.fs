@@ -3,7 +3,6 @@ open System.Collections.Generic
 let isDebug = false
                     
 let inventory = new Dictionary<string, int>()
-let productDic = new Dictionary<string, int*(string*int) list>()
 
 let rec tcaer(product, quantity, productList:string) =
     if product = "ORE" then
