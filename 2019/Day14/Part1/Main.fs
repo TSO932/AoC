@@ -4,13 +4,7 @@ let isDebug = false
                     
 let inventory = new Dictionary<string, int>()
 
-let rec tcaer(product, quantity, productList:string) =
-    if product = "ORE" then
-        quantity
-    else
-        if product = "FUEL" then
-            inventory.Keys |> Seq.iter (inventory.Remove >> ignore)
-            
+let getProductDic(productList:string) = 
         let formatInventoryLine(line:string) =
             let formatReagent(reagent:string) =
                 reagent.Split ' ' |> fun x -> (x.[1], int x.[0])
@@ -19,8 +13,15 @@ let rec tcaer(product, quantity, productList:string) =
             let product = pair.[1].Split ' '
             product.[1], (int product.[0], List.ofSeq reagents)
 
-        let productDic = productList.Split ([|'\010'; '\013'|], System.StringSplitOptions.RemoveEmptyEntries) |> Seq.map formatInventoryLine |> dict
-        
+        productList.Split ([|'\010'; '\013'|], System.StringSplitOptions.RemoveEmptyEntries) |> Seq.map formatInventoryLine |> dict
+
+let rec tcaer(product, quantity, productDic:IDictionary<string, (int * (string * int) list)>, isStart) =
+    if product = "ORE" then
+        quantity
+    else
+        if isStart then
+            inventory.Keys |> Seq.iter (inventory.Remove >> ignore)
+            
         let reactants = snd (productDic.TryGetValue(product))
         let currentQuantity = snd (inventory.TryGetValue(product))
 
@@ -39,7 +40,7 @@ let rec tcaer(product, quantity, productList:string) =
         if isDebug then printfn "p %s q %i cQ %i b %i l %i" product quantity currentQuantity batchesRequired (inventory.Count)
 
         //snd reactants |> List.map (fun (r, q) -> (r, q * batchesRequired)) |> List.map tcaer |> List.sum
-        List.sumBy tcaer (snd reactants |> List.map (fun (r, q) -> (r, q * batchesRequired)) |> List.groupBy fst |> List.map (fun (a,b) -> (a, b |> List.sumBy snd, productList)))
+        List.sumBy tcaer (snd reactants |> List.map (fun (r, q) -> (r, q * batchesRequired)) |> List.groupBy fst |> List.map (fun (a,b) -> (a, b |> List.sumBy snd, productDic, false)))
 
 
 let list1 = "10 ORE => 10 A
@@ -98,22 +99,20 @@ let list5 = "171 ORE => 8 CNZTR
 7 XCVML => 6 RJRHP
 5 BHXH, 4 VRPVC => 5 LTCX"
 
-printfn "%i" (tcaer("A", 1, list2)) // 9
-printfn "%i" (tcaer("A", 2, list2)) // 9
-printfn "%i" (tcaer("B", 1, list2)) // 8
-printfn "%i" (tcaer("C", 1, list2)) // 7
-inventory.Keys |> Seq.iter (inventory.Remove >> ignore) //need to clear down inventory (happens automatically if "FUEL")
-printfn "%i" (tcaer("AB", 1, list2)) // sum of ((no of batches needed) * (units needed for batch)) =>  2 * 9 + 2 * 8 = 34
-printfn "%i" (tcaer("BC", 1, list2)) // 2 * 8 + 2 * 7 = 30
-printfn "%i" (tcaer("CA", 1, list2)) // 1 * 7 + 1 * 9 = 16
-inventory.Keys |> Seq.iter (inventory.Remove >> ignore)
-printfn "%i" (tcaer("FUEL", 1, list2))
+printfn "%i" (tcaer("A", 1, getProductDic(list2), true)) // 9
+printfn "%i" (tcaer("A", 2, getProductDic(list2), true)) // 9
+printfn "%i" (tcaer("B", 1, getProductDic(list2), true)) // 8
+printfn "%i" (tcaer("C", 1, getProductDic(list2), true)) // 7
+printfn "%i" (tcaer("AB", 1, getProductDic(list2), true)) // sum of ((no of batches needed) * (units needed for batch)) =>  2 * 9 + 2 * 8 = 34
+printfn "%i" (tcaer("BC", 1, getProductDic(list2), true)) // 2 * 8 + 2 * 7 = 30
+printfn "%i" (tcaer("CA", 1, getProductDic(list2), true)) // 1 * 7 + 1 * 9 = 16
+printfn "%i" (tcaer("FUEL", 1, getProductDic(list2), true))
 
-printfn "%i" (tcaer("FUEL", 1, list1))
-printfn "%i" (tcaer("FUEL", 1, list3))
-printfn "%i" (tcaer("FUEL", 1, list4))
-printfn "%i" (tcaer("FUEL", 1, list5))
+printfn "%i" (tcaer("FUEL", 1, getProductDic(list1), true))
+printfn "%i" (tcaer("FUEL", 1, getProductDic(list3), true))
+printfn "%i" (tcaer("FUEL", 1, getProductDic(list4), true))
+printfn "%i" (tcaer("FUEL", 1, getProductDic(list5), true))
 
 let challengeInput = "QWERTYUIOP" // paste input string over dummy values
 
-printfn "%i" (tcaer("FUEL", 1, challengeInput))
+printfn "%i" (tcaer("FUEL", 1, getProductDic(challengeInput), true))
