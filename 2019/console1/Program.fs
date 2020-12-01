@@ -39,6 +39,9 @@ let main argv =
     printfn "Day 10 Part 1: %i" (snd asteroid)
     printfn "Day 10 Part 2: %i" (Day10Part2.vaporise ((File.ReadAllLines("../input/Day10/input.txt"), fst asteroid)))
    
+    printfn "Day 11 Part 1: %i" (Day11Part2.runProgram (getInputLine "../input/Day11/input.txt", true))
+    printfn "Day 11 Part 2: %i" (Day11Part2.runProgram (getInputLine "../input/Day11/input.txt", false))
+    
 
     0 // return an integer exit code
 
