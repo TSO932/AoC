@@ -8,9 +8,9 @@
   <ItemGroup>
     <ProjectReference Include="..\code\code.fsproj" />
   </ItemGroup>
-  
+
   <ItemGroup>
-    <Compile Include="Program.fs" />
+    <Compile Include="Program1.fs" />
   </ItemGroup>
 
 </Project>
