@@ -45,5 +45,13 @@ let main argv =
     printfn "Day 12 Part 1: %i" (Day12Part1.runSimulation (Day12Part1.readCoordinates (File.ReadAllLines("../input/Day12/input.txt")), 1000))
     printfn "Day 12 Part 2: %A" (Day12Part2.runSimulationThrice (Day12Part1.readCoordinates (File.ReadAllLines("../input/Day12/input.txt"))))
 
+    printfn "Day 13 Part 1: %i" (Day13Part1.runProgram (getInputLine "../input/Day13/input.txt"))
+    printfn "Day 13 Part 2:"
+    Day13Part2.runProgram (getInputLine "../input/Day13/input.txt") |> ignore
+
+
+    printfn "Day 14 Part 1: %i" (Day14Part1.tcaer("FUEL", 1, Day14Part1.getProductDic(File.ReadAllLines("../input/Day14/input.txt")), true))
+    printfn "Day 14 Part 2: %i" (Day14Part2.findOneTrillion(File.ReadAllLines("../input/Day14/input.txt")))
+
     0 // return an integer exit code
 
