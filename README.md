@@ -1,12 +1,16 @@
 # Advent of Code
 
-https://adventofcode.com/
+My [Advent of Code](https://adventofcode.com/) solutions in F#.
+
 
 Handy links to online compliers:
 
-https://rextester.com/l/fsharp_online_compiler
-https://www.jdoodle.com/compile-fsharp-online/
-https://dotnetfiddle.net/
+- https://rextester.com/l/fsharp_online_compiler
+- https://www.jdoodle.com/compile-fsharp-online/
+- https://dotnetfiddle.net/
+
+
+----
 
 The versions in this repository are running in Visual Studio Code with [Microsoft .NET Core SDK3.0.100](https://dotnet.microsoft.com/download) installed.
 
