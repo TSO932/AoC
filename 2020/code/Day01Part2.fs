@@ -1,9 +1,9 @@
 namespace AoC2020
 
 module Day01Part2 =
-    let fixExpenses (inputString:seq<string>) =
+    let fixExpenses (inputStrings:seq<string>) =
 
-        let digits = inputString |> Seq.map int |> List.ofSeq
+        let digits = inputStrings |> Seq.map int |> List.ofSeq
 
         let mutable answer = 0
         for position1 in [0..digits.Length - 1] do
