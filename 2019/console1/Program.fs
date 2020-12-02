@@ -38,10 +38,12 @@ let main argv =
     let asteroid = Day10Part1.findBestAsteroid (File.ReadAllLines("../input/Day10/input.txt"))
     printfn "Day 10 Part 1: %i" (snd asteroid)
     printfn "Day 10 Part 2: %i" (Day10Part2.vaporise ((File.ReadAllLines("../input/Day10/input.txt"), fst asteroid)))
-   
+  
     printfn "Day 11 Part 1: %i" (Day11Part2.runProgram (getInputLine "../input/Day11/input.txt", true))
     printfn "Day 11 Part 2: %i" (Day11Part2.runProgram (getInputLine "../input/Day11/input.txt", false))
     
+    printfn "Day 12 Part 1: %i" (Day12Part1.runSimulation (Day12Part1.readCoordinates (File.ReadAllLines("../input/Day12/input.txt")), 1000))
+    printfn "Day 12 Part 2: %A" (Day12Part2.runSimulationThrice (Day12Part1.readCoordinates (File.ReadAllLines("../input/Day12/input.txt"))))
 
     0 // return an integer exit code
 
