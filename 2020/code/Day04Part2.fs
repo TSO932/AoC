@@ -10,15 +10,15 @@ module Day04Part2 =
         let validate(cred:seq<string>) =
             let value = Seq.tail cred |> Seq.head
             match Seq.head cred with
-                | "byr" -> value.Length = 4 && Regex.IsMatch (value, @"(19[2-9][0-9])|(200[0-2])")
-                | "iyr" -> value.Length = 4 &&  Regex.IsMatch (value, @"20(1[0-9]|20)")
-                | "eyr" -> value.Length = 4 && Regex.IsMatch (value, @"20(2[0-9]|30)")
-                | "hgt" -> value.Length <= 5 && Regex.IsMatch (value, @"(1[5-8][0-9]|19[0-3])cm|(59|6[0-9]|7[0-6])in")
-                | "hcl" -> value.Length = 7 && Regex.IsMatch (value, @"^#([0-9]|[a-f]){6}$")
-                | "ecl" -> value.Length = 3 && match value with
-                                                | "amb" | "blu" | "brn" | "gry" | "grn" | "hzl" | "oth" -> true
-                                                | _ -> false
-                | "pid" -> value.Length = 9 && Regex.IsMatch (value, @"[0-9]{9}")
+                | "byr" -> Regex.IsMatch (value, @"^((19[2-9][0-9])|(200[0-2]))$")
+                | "iyr" -> Regex.IsMatch (value, @"^20(1[0-9]|20)$")
+                | "eyr" -> Regex.IsMatch (value, @"^20(2[0-9]|30)$")
+                | "hgt" -> Regex.IsMatch (value, @"^((1[5-8][0-9]|19[0-3])cm|(59|6[0-9]|7[0-6])in)$")
+                | "hcl" -> Regex.IsMatch (value, @"^#([0-9]|[a-f]){6}$")
+                | "ecl" -> match value with
+                            | "amb" | "blu" | "brn" | "gry" | "grn" | "hzl" | "oth" -> true
+                            | _ -> false
+                | "pid" -> Regex.IsMatch (value, @"^[0-9]{9}$")
                 | _     -> true
 
         credential.Split(' ', StringSplitOptions.RemoveEmptyEntries) |> Seq.map (fun x -> x.Split ':') |> Seq.map validate |> Seq.contains false |> not

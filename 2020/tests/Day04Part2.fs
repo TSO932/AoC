@@ -7,6 +7,12 @@ open AoC2020
 [<TestFixture>] 
 type Day04Part2 () =
 
+    let dateChecks(key:string, min:int , max:int) =
+        Assert.AreEqual(true, Day04Part2.validateCredential (key + ":" + min.ToString()))
+        Assert.AreEqual(false, Day04Part2.validateCredential (key + ":" + (min - 1).ToString()))
+        Assert.AreEqual(true, Day04Part2.validateCredential (key + ":" + max.ToString()))
+        Assert.AreEqual(false, Day04Part2.validateCredential (key + ":" + (max + 1).ToString()))
+
     [<Test>]
     member this.validateCredential() =
         Assert.AreEqual(true, Day04Part2.validateCredential "pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980 hcl:#623a2f")
@@ -18,6 +24,14 @@ type Day04Part2 () =
     [<Test>]
     member this.validateBYRisInvalid() =
         Assert.AreEqual(false, Day04Part2.validateCredential "byr:2003")
+
+    [<Test>]
+    member this.validateBYRtooLong() =
+        Assert.AreEqual(false, Day04Part2.validateCredential "byr:11999")
+
+    [<Test>]
+    member this.validateBYRtooShort() =
+        Assert.AreEqual(false, Day04Part2.validateCredential "byr:82")
 
     [<Test>]
     member this.validateIYRisValid() =
@@ -52,6 +66,10 @@ type Day04Part2 () =
         Assert.AreEqual(false, Day04Part2.validateCredential "hgt:190")
 
     [<Test>]
+    member this.validateHGTisInvalid3() =
+        Assert.AreEqual(false, Day04Part2.validateCredential "hgt:60inc")
+
+    [<Test>]
     member this.validateHCLisValid() =
         Assert.AreEqual(true, Day04Part2.validateCredential "hcl:#123abc")
 
@@ -71,6 +89,20 @@ type Day04Part2 () =
     member this.validateECLisInvalid() =
         Assert.AreEqual(false, Day04Part2.validateCredential "ecl:wat")
 
+    [<Test>]
+    member this.validateBYRrange() = dateChecks("byr", 1920, 2002)
+
+    [<Test>]
+    member this.validateIYRrange() = dateChecks("iyr", 2010, 2020)
+
+    [<Test>]
+    member this.validateEYRrange() = dateChecks("eyr", 2020, 2030)
 
     [<Test>]
     member this.Example1() = Assert.AreEqual(2, Day04Part2.validateCredentials(Day04Part1.formatCredentials (File.ReadAllLines("../../../data/Day04/test1.txt"))))
+
+    [<Test>]
+    member this.InvalidExamples() = Assert.AreEqual(0, Day04Part2.validateCredentials(Day04Part1.formatCredentials (File.ReadAllLines("../../../data/Day04/test3.txt"))))
+
+    [<Test>]
+    member this.ValidExamples() = Assert.AreEqual(4, Day04Part2.validateCredentials(Day04Part1.formatCredentials (File.ReadAllLines("../../../data/Day04/test4.txt"))))
