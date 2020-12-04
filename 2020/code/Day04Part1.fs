@@ -19,10 +19,3 @@ module Day04Part1 =
             requiredFields |> Seq.map (fun x -> credential.Contains x) |> Seq.contains false |> not
         
         credentials |> Seq.map (fun x -> if containsAllRequiredFields x then 1 else 0 ) |> Seq.sum 
-       
-
-    let runProgram (forestMap:seq<string>) =
-
-        let isDebug = true
-        
-        0
