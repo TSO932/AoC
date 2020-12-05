@@ -16,6 +16,7 @@ let main argv =
     printfn "Day  4 Part 1: %i" (Day04Part1.validateCredentials(Day04Part1.formatCredentials (File.ReadAllLines("../input/Day04/input.txt"))))
     printfn "Day  4 Part 2: %i" (Day04Part2.validateCredentials(Day04Part1.formatCredentials (File.ReadAllLines("../input/Day04/input.txt"))))
 
-    printfn "Day  5 Part 1: %i" (Day05Part1.findHighestSeatId (File.ReadAllLines("../input/Day05/input.txt")))
+    printfn "Day  5 Part 1: %i" (Day05Part1.findHighestSeatId(File.ReadAllLines("../input/Day05/input.txt")))
+    printfn "Day  5 Part 1: %A" (Day05Part2.findMySeat(File.ReadAllLines("../input/Day05/input.txt")))
 
     0 // return an integer exit code
