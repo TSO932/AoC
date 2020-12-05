@@ -1,6 +1,5 @@
 namespace AoC2020.Tests
 
-open System.IO
 open NUnit.Framework
 open AoC2020
 
