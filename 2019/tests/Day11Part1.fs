@@ -1,5 +1,6 @@
 namespace AoC2019.Tests
 
+open System
 open NUnit.Framework
 open AoC2019
 
@@ -36,16 +37,8 @@ type Day11Part1 () =
     [<Test>]
     member this.rotate_WayUnder()   = Assert.AreEqual(((-1,  0), 270), Day11Part1.rotate(((0, 0),-540),  1))
 
-
-    //The  next two tests are checking the error message.  They're not actually checking that the exeption is being thrown in the first place.
-    //They tests don't fail if no execption is thrown.
-    
     [<Test>]
-    member this.rotate_BadAngle()   = 
-        try (Day11Part1.rotate(((0, 0),  45),  1) |> ignore)
-        with | :? System.ArgumentException as ex -> Assert.AreEqual("135 (Parameter 'Invalid newDirection input to rotate function. Expected 0, 90, 180 or 270')", ex.Message)
+    member this.rotate_BadAngle() = Assert.Throws<ArgumentException> (fun() -> Day11Part1.rotate(((0, 0),  45),  1) |> ignore) |> ignore
 
     [<Test>]
-    member this.rotate_BadDirection()   = 
-        try (Day11Part1.rotate(((0, 0),   0),  2) |> ignore)
-        with | :? System.ArgumentException as ex -> Assert.AreEqual("2 (Parameter 'Invalid turnInstruction input to rotate function. Expected 0 or 1')", ex.Message)
+    member this.rotate_BadDirection() = Assert.Throws<ArgumentException> (fun() -> Day11Part1.rotate(((0, 0),   0),  2) |> ignore) |> ignore

@@ -10,4 +10,5 @@ module Day05Part2 =
                 |> Seq.filter (fun x ->     (SeatIds |> Seq.contains (x - 1)))
                 |> Seq.filter (fun x -> not (SeatIds |> Seq.contains  x     ))
                 |> Seq.filter (fun x ->     (SeatIds |> Seq.contains (x + 1)))
+                |> Seq.exactlyOne
            
