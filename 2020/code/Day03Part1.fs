@@ -5,7 +5,7 @@ module Day03Part1 =
 
         let isDebug = false
         
-        let arrays = forestMap |> Seq.map (String.replicate (3 * Seq.length forestMap)) |> Seq.map (Array.ofSeq) |> Array.ofSeq
+        let arrays = (Seq.map ((String.replicate (3 * Seq.length forestMap)) >> Array.ofSeq) forestMap) |> Array.ofSeq
         let matrix = Array2D.init arrays.Length arrays.[0].Length (fun i j -> arrays.[i].[j])
 
         if isDebug then printfn "%A" matrix

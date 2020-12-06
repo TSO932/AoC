@@ -16,6 +16,6 @@ module Day04Part1 =
         let requiredFields = ["byr:"; "iyr:"; "eyr:"; "hgt:"; "hcl:"; "ecl:"; "pid:"]
 
         let containsAllRequiredFields(credential:string) =
-            requiredFields |> Seq.map (fun x -> credential.Contains x) |> Seq.contains false |> not
+            requiredFields |> Seq.map (credential.Contains) |> Seq.contains false |> not
         
-        credentials |> Seq.map (fun x -> if containsAllRequiredFields x then 1 else 0 ) |> Seq.sum 
+        Seq.sumBy (fun x -> if containsAllRequiredFields x then 1 else 0) credentials 
