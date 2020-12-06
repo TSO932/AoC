@@ -20,6 +20,7 @@ let main argv =
     // printfn "Day  5 Part 1: %A" (Day05Part2.findMySeat(File.ReadAllLines("../input/Day05/input.txt")))
 
     printfn "Day  6 Part 1: %i" (Day06Part1.countYeses(File.ReadAllLines("../input/Day06/input.txt")))
+    printfn "Day  6 Part 2: %i" (Day06Part2.countYeses(File.ReadAllLines("../input/Day06/input.txt")))
 
 
     0 // return an integer exit code
