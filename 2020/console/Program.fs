@@ -22,8 +22,11 @@ let main argv =
     // printfn "Day  6 Part 1: %i" (Day06Part1.countYeses(File.ReadAllLines("../input/Day06/input.txt")))
     // printfn "Day  6 Part 2: %i" (Day06Part2.countYeses(File.ReadAllLines("../input/Day06/input.txt")))
 
-    printfn "Day  7 Part 1: %A" (Day07Part1.myPrecious(File.ReadAllLines("../input/Day07/input.txt")))
-    printfn "Day  7 Part 2: %A" (Day07Part2.myPrecious(File.ReadAllLines("../input/Day07/input.txt")))
+    // printfn "Day  7 Part 1: %A" (Day07Part1.myPrecious(File.ReadAllLines("../input/Day07/input.txt")))
+    // printfn "Day  7 Part 2: %A" (Day07Part2.myPrecious(File.ReadAllLines("../input/Day07/input.txt")))
+
+    printfn "Day  8 Part 1: %A" (Day08Part1.myPrecious(File.ReadAllLines("../input/Day08/input.txt")))
+    
 
 
     0 // return an integer exit code
