@@ -5,7 +5,6 @@ open System
 module Day07Part1 =
     let countOuterBags (innerBags:list<string>, bagRules:seq<string>) =
 
-        //let bagMap = bagRules |> Seq.map (fun x -> x.Split " contain " |> fun x -> (x.[0], x.[1])) |> Map.ofSeq
         let bagMap = bagRules |> Seq.map (fun x -> x.Replace("bags", "bag").Split " contain ")
 
         let rec getBags(bags:list<string>) =
