@@ -5,11 +5,11 @@ open  System.Text
 module Day04Part1 =
 
     let formatCredentials(credentialFile:seq<string>) =
-        let seasonalyFestiveDelimiter = "Ho! Ho! Ho!"
+        let seasonallyFestiveDelimiter = "Ho! Ho! Ho!"
         let credentials =
-            let cred1 = credentialFile |> Seq.map (fun x -> if x = "" then seasonalyFestiveDelimiter else x)
+            let cred1 = credentialFile |> Seq.map (fun x -> if x = "" then seasonallyFestiveDelimiter else x)
             let cred2 = cred1 |> Seq.fold (fun (acc:StringBuilder) cred -> acc.Append(cred).Append(" ")) (new StringBuilder())
-            cred2.ToString().Split seasonalyFestiveDelimiter
+            cred2.ToString().Split seasonallyFestiveDelimiter
         credentials
 
     let validateCredentials(credentials:seq<string>) =
