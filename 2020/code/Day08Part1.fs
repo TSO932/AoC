@@ -5,8 +5,6 @@ module Day08Part1 =
 
         let instructions = instructionSet |> Array.ofSeq |> Array.map (fun x -> x.Split ' ') |> Array.map (fun y -> (y.[0], int y.[1])) 
         
-        // inputString.Split ',' |> Array.map System.Int32.Parse
-
         let mutable acc = 0
         let mutable index = 0
 
