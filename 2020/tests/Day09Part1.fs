@@ -8,4 +8,4 @@ open AoC2020
 type Day09Part1 () =
 
     [<Test>]
-    member this.Example2() = Assert.AreEqual(8, Day09Part1.findInvalidNum (File.ReadAllLines("../../../data/Day09/test1.txt"), 5))
+    member this.Example2() = Assert.AreEqual(62, Day09Part1.findInvalidNum (File.ReadAllLines("../../../data/Day09/test1.txt"), 5))
