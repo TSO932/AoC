@@ -4,5 +4,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Day*Part*.fs" />
+    <Compile Include="PerformanceMeasure.fs" />
   </ItemGroup>
 </Project>
