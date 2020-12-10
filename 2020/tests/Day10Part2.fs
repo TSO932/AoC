@@ -8,6 +8,15 @@ open AoC2020
 type Day10Part2 () =
 
     [<Test>]
+    member this.A() = Assert.AreEqual(1, Day10Part2.calculate (Seq.empty))
+
+    [<Test>]
+    member this.B() = Assert.AreEqual(1, Day10Part2.calculate (seq {"1"}))
+
+    [<Test>]
+    member this.C() = Assert.AreEqual(222, Day10Part2.calculate (seq {"1";"2"}))
+
+    [<Test>]
     member this.Example1() = Assert.AreEqual(8, Day10Part2.calculate (File.ReadAllLines("../../../data/Day10/test1.txt")))
 
     [<Test>]
