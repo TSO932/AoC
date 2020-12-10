@@ -14,7 +14,10 @@ type Day10Part2 () =
     member this.B() = Assert.AreEqual(1, Day10Part2.calculate (seq {"1"}))
 
     [<Test>]
-    member this.C() = Assert.AreEqual(222, Day10Part2.calculate (seq {"1";"2"}))
+    member this.C() = Assert.AreEqual(2, Day10Part2.calculate (seq {"1";"2"}))
+
+    [<Test>]
+    member this.D() = Assert.AreEqual(4, Day10Part2.calculate (seq {"1";"2";"3"}))
 
     [<Test>]
     member this.Example1() = Assert.AreEqual(8, Day10Part2.calculate (File.ReadAllLines("../../../data/Day10/test1.txt")))
