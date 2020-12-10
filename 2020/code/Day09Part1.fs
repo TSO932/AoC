@@ -11,6 +11,6 @@ module Day09Part1 =
             
         intArray
             |> Array.mapi (fun i x -> (x, if i <= preambleLength then true else checkValidity i)) 
-            |> Array.filter (fun b -> snd b = false) |> Array.map fst |> Array.exactlyOne
+            |> Array.filter (fun b -> (not (snd b))) |> Array.map fst |> Array.exactlyOne
 
     let findInvalidNumber (dataSequence:seq<string>) = findInvalidNum(dataSequence, 25)
