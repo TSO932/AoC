@@ -37,9 +37,11 @@ let main argv =
     // printfn "Day  9 Part 1 Elapsed Milliseconds: %f " (PerformanceMeasure.measurePerformance(Day09Part1.findInvalidNumber, File.ReadAllLines("../input/Day09/input.txt")))
     // printfn "Day  9 Part 2 Elapsed Milliseconds: %f " (PerformanceMeasure.measurePerformance(Day09Part2.findEncryptionWeakness, File.ReadAllLines("../input/Day09/input.txt")))
 
-    printfn "Day 10 Part 1: %i" (Day10Part1.calculate(File.ReadAllLines("../input/Day10/input.txt")))
-    printfn "Day 10 Part 1: %i" (Day10Part2.calculate(File.ReadAllLines("../input/Day10/input.txt")))
+    // printfn "Day 10 Part 1: %i" (Day10Part1.calculate(File.ReadAllLines("../input/Day10/input.txt")))
+    // printfn "Day 10 Part 1: %i" (Day10Part2.calculate(File.ReadAllLines("../input/Day10/input.txt")))
 
-    printfn "Day 10 Part 2 Elapsed Milliseconds: %f " (PerformanceMeasure.measurePerformance(Day10Part2.calculate, File.ReadAllLines("../input/Day10/input.txt")))
+    // printfn "Day 10 Part 2 Elapsed Milliseconds: %f " (PerformanceMeasure.measurePerformance(Day10Part2.calculate, File.ReadAllLines("../input/Day10/input.txt")))
+
+    printfn "Day 11 Part 1: %i" (Day11Part1.countSeats(File.ReadAllLines("../input/Day11/input.txt")))
 
     0 // return an integer exit code
