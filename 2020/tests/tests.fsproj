@@ -8,6 +8,7 @@
   <ItemGroup>
     <Compile Include="Day*Part*.fs" />
     <Compile Include="Day11Part1.fs" />
+    <Compile Include="Day12Part2.fs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="NUnit" Version="3.12.0" />
