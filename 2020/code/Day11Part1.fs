@@ -20,8 +20,8 @@ module Day11Part1 =
             if isDebug then printfn "%A" (oldOccupancy |> Array2D.mapi (fun y x c -> peopleCount oldOccupancy.[(max 0 (y - 1))..(min maxHeight (y + 1)),(max 0 (x - 1))..(min maxWidth (x + 1))]))
 
             let flipSeats(v, h, c) =
-                let countNeighbours(x, y) = 
-                    oldOccupancy.[(max 0 (y - 1))..(min maxHeight (y + 1)),(max 0 (x - 1))..(min maxWidth (x + 1))]
+                let countNeighbours(col, row) = 
+                    oldOccupancy.[(max 0 (row - 1))..(min maxHeight (row + 1)),(max 0 (col - 1))..(min maxWidth (col + 1))]
                         |> peopleCount
  
                 if   c = 'L' && countNeighbours(v, h)  = 0 then '#'

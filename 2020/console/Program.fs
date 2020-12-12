@@ -43,5 +43,6 @@ let main argv =
     // printfn "Day 10 Part 2 Elapsed Milliseconds: %f " (PerformanceMeasure.measurePerformance(Day10Part2.calculate, File.ReadAllLines("../input/Day10/input.txt")))
 
     printfn "Day 11 Part 1: %i" (Day11Part1.countSeats(File.ReadAllLines("../input/Day11/input.txt")))
-
+    printfn "Day 11 Part 1: %i" (Day11Part2.countSeats(File.ReadAllLines("../input/Day11/input.txt")))
+    
     0 // return an integer exit code
