@@ -8,4 +8,4 @@ open AoC2020
 type Day17Part1 () =
 
     [<Test>]
-    member this.Example1() = Assert.AreEqual(0, Day17Part1.countActiveCells (File.ReadAllLines("../../../data/Day17/test1.txt")))
+    member this.Example1() = Assert.AreEqual(112, Day17Part1.countActiveCells (File.ReadAllLines("../../../data/Day17/test1.txt")))
