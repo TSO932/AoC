@@ -3,7 +3,7 @@ namespace AoC2020
 open System.Collections.Generic
 
 module Day15Part1 =
-    let playMemoryGame (startingNumbers:seq<int>) =
+    let playGame (numberOfRounds:int, startingNumbers:seq<int>) =
 
 
         let isDebug = false
@@ -27,11 +27,14 @@ module Day15Part1 =
         for number in startingNumbers do 
                 speak number
 
-        while roundNumber <= 2020 do
+        while roundNumber <= numberOfRounds do
             let (hasBeenSpokenBefore, turnWhenLastSpoken) = elvesMemory.TryGetValue(lastSpokenNumber)
             speak (if hasBeenSpokenBefore then roundNumber - turnWhenLastSpoken else 0)
 
         lastSpokenNumber
+
+    let playMemoryGame (startingNumbers:seq<int>) =
+        playGame(2020, startingNumbers) 
 
     let getStartingNumbers(input:seq<string>) =
         (input |> Array.ofSeq |> Array.head).Split ',' |> Seq.map int
