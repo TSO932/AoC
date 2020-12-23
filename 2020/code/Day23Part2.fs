@@ -2,10 +2,11 @@ namespace AoC2020
 
 open System
 
-module Day23Part1 =
+module Day23Part2 =
 
     let getCircleOfCups(cupString:string) =
-        cupString |> Array.ofSeq |> Array.map (string >> int)
+        let start = cupString |> Array.ofSeq |> Array.map (string >> int)
+        Array.append start (seq {(start.Length + 1)..1000000} |> Array.ofSeq)
 
     let getDestinationPosition(cupCircle:int[]) =
 
@@ -31,13 +32,22 @@ module Day23Part1 =
                     cupCircle.[0..0]
                     cupCircle.[4..destinationPosition])
                     cupCircle.[1..3])
-                    cupCircle.[(destinationPosition + 1)..(Array.length cupCircle - 1)]
+                    cupCircle.[(destinationPosition + 1)..(cupCircle.Length - 1)]
 
     let rec play(itterations:int, cupCircle:int[]) =
         if itterations = 0 then
-            cupCircle
+            let positionOfOne = Array.IndexOf(cupCircle, 1)
+            let findPosition(relativePosition:int) =
+                let newPosition = positionOfOne + relativePosition
+                if newPosition < cupCircle.Length then
+                    newPosition
+                else
+                    newPosition - cupCircle.Length 
+
+            int64(cupCircle.[findPosition(1)]) * int64(cupCircle.[findPosition(2)]) 
         else
             play(itterations - 1, rotateCircleByOne(cutAndShunt(cupCircle)))
 
     let playGame (inputData:seq<string>) =
-        play(100, getCircleOfCups((Array.ofSeq inputData).[0]))
+        // play(10000000, getCircleOfCups((Array.ofSeq inputData).[0]))
+        play(10000, getCircleOfCups((Array.ofSeq inputData).[0]))
