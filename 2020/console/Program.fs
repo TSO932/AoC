@@ -56,7 +56,9 @@ let main argv =
     // printfn "Day 17 Part 1: %i" (Day17Part1.countActiveCells(File.ReadAllLines("../input/Day17/input.txt")))
     // printfn "Day 17 Part 2: %i" (Day17Part2.countActiveCells(File.ReadAllLines("../input/Day17/input.txt")))
 
-    printfn "Day 20 Part 1: %i" (Day20Part1.findCorners(File.ReadAllLines("../input/Day20/input.txt")))
-    printfn "Day 20 Part 1 Elapsed Milliseconds: %f " (PerformanceMeasure.measurePerformance(Day20Part1.findCorners, File.ReadAllLines("../input/Day20/input.txt")))
+    // printfn "Day 20 Part 1: %i" (Day20Part1.findCorners(File.ReadAllLines("../input/Day20/input.txt")))
+    // printfn "Day 20 Part 1 Elapsed Milliseconds: %f " (PerformanceMeasure.measurePerformance(Day20Part1.findCorners, File.ReadAllLines("../input/Day20/input.txt")))
+
+    printfn "Day 23 Part 1: %A" (Day23Part1.playGame(File.ReadAllLines("../input/Day23/input.txt")))
 
     0 // return an integer exit code
