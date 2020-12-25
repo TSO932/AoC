@@ -17,10 +17,10 @@ type Day25Part1 () =
     member this.GetEncryptionKeyOneWay() = Assert.AreEqual(14897079, Day25Part1.getEncryptionKey(5764801L, 10))
 
     [<Test>]
-    member this.GetEncryptionKeyTheOthweWay() = Assert.AreEqual(14897079, Day25Part1.getEncryptionKey(17807724L, 7))
+    member this.GetEncryptionKeyTheOtherWay() = Assert.AreEqual(14897079, Day25Part1.getEncryptionKey(17807724L, 7))
   
     [<Test>]
     member this.GetCrackTheLockOneWay() = Assert.AreEqual(14897079, Day25Part1.crackTheLock(5764801L, 17807724L))
 
     [<Test>]
-    member this.GetCrackTheLockTheOthweWay() = Assert.AreEqual(14897079, Day25Part1.crackTheLock(17807724L, 5764801L))
+    member this.GetCrackTheLockTheOtherWay() = Assert.AreEqual(14897079, Day25Part1.crackTheLock(17807724L, 5764801L))
