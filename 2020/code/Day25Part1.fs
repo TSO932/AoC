@@ -31,6 +31,9 @@ module Day25Part1 =
     let crackTheLock(publicKeyA:int64, publicKeyB:int64) =
         getEncryptionKey(publicKeyA, getLoopSize(publicKeyB))
 
+    let merryChristmas(publicKeys:seq<string>) =
+        let keys = publicKeys |> Array.ofSeq
+        crackTheLock(int64 keys.[0], int64 keys.[1])
 
 
         
