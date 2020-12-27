@@ -19,7 +19,7 @@ module Day22Part1 =
             [| deckA; List.append deckB [topB; topA]|]
 
     let scoreDeck (deck:int list) =
-        deck |> List.rev |> List.mapi (fun i x -> x * (i+1)) |> List.sumBy id
+        deck |> List.rev |> List.mapi (fun i x -> x * (i + 1)) |> List.sumBy id
 
 
     let playCombat (startingDecks:seq<string>) =
@@ -30,7 +30,7 @@ module Day22Part1 =
             if decks.[0].IsEmpty then
                 decks.[1]
             elif decks.[1].IsEmpty then
-                decks.[2]
+                decks.[0]
             else
                 play(playRound(decks))
 
