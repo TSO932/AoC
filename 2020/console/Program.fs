@@ -64,6 +64,7 @@ let main argv =
     // printfn "Day 23 Part 2 Elapsed Milliseconds: %f " (PerformanceMeasure.measurePerformance(Day23Part2.playGame, File.ReadAllLines("../input/Day23/input.txt")))
 
     // printfn "Day 24 Part 1: %i" (Day24Part1.countTiles(File.ReadAllLines("../input/Day24/input.txt")))
+    printfn "Day 24 Part 2: %i" (Day24Part2.countTiles(File.ReadAllLines("../input/Day24/input.txt")))
 
-    printfn "Day 25 Part 1: %i" (Day25Part1.merryChristmas(File.ReadAllLines("../input/Day25/input.txt")))
+    //printfn "Day 25 Part 1: %i" (Day25Part1.merryChristmas(File.ReadAllLines("../input/Day25/input.txt")))
     0 // return an integer exit code

@@ -1,6 +1,5 @@
 namespace AoC2020
 
-open System.Collections.Generic
 open System.Text.RegularExpressions
 
 module Day24Part1 =
