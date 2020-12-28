@@ -59,12 +59,15 @@ let main argv =
     // printfn "Day 20 Part 1: %i" (Day20Part1.findCorners(File.ReadAllLines("../input/Day20/input.txt")))
     // printfn "Day 20 Part 1 Elapsed Milliseconds: %f " (PerformanceMeasure.measurePerformance(Day20Part1.findCorners, File.ReadAllLines("../input/Day20/input.txt")))
 
+    printfn "Day 22 Part 1: %i" (Day22Part1.playCombat(File.ReadAllLines("../input/Day22/input.txt")))
+    printfn "Day 22 Part 2: %i" (Day22Part2.playCombat(File.ReadAllLines("../input/Day22/input.txt")))
+
     // printfn "Day 23 Part 1: %A" (Day23Part1.playGame(File.ReadAllLines("../input/Day23/input.txt")))
     // printfn "Day 23 Part 2: %A" (Day23Part2.playGame(File.ReadAllLines("../input/Day23/input.txt")))
     // printfn "Day 23 Part 2 Elapsed Milliseconds: %f " (PerformanceMeasure.measurePerformance(Day23Part2.playGame, File.ReadAllLines("../input/Day23/input.txt")))
 
     // printfn "Day 24 Part 1: %i" (Day24Part1.countTiles(File.ReadAllLines("../input/Day24/input.txt")))
-    printfn "Day 24 Part 2: %i" (Day24Part2.countTiles(File.ReadAllLines("../input/Day24/input.txt")))
+    // printfn "Day 24 Part 2: %i" (Day24Part2.countTiles(File.ReadAllLines("../input/Day24/input.txt")))
 
     //printfn "Day 25 Part 1: %i" (Day25Part1.merryChristmas(File.ReadAllLines("../input/Day25/input.txt")))
     0 // return an integer exit code
