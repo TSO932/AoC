@@ -1,12 +1,24 @@
 namespace AoC2020
 
 open System
+open System.Collections.Generic
 
 module Day23Part2 =
 
+    let rotateCircle(currentPosition:int, cupCircle:int[]) = 
+        Array.append cupCircle.[currentPosition..(cupCircle.Length - 1)] cupCircle.[0..(currentPosition - 1)] 
+
+    let rotateCircleByOne(cupCircle:int[]) = rotateCircle(1, cupCircle) 
+
     let getCircleOfCups(cupString:string) =
         let start = cupString |> Array.ofSeq |> Array.map (string >> int)
-        Array.append start (seq {(start.Length + 1)..1000000} |> Array.ofSeq)
+        let circle = Array.append start (seq {(start.Length + 1)..1000000} |> Array.ofSeq)
+
+        let rotatedCircle = rotateCircleByOne(circle) 
+        let cupMap = new Dictionary<int, int>()
+        circle |> Array.iteri (fun i x -> cupMap.Add(x, rotatedCircle.[i]))
+
+        circle
 
     let getDestinationPosition(cupCircle:int[]) =
 
@@ -17,11 +29,6 @@ module Day23Part2 =
             if Array.isEmpty lowerValues then circleWithoutCupsToMove else lowerValues
          
         Array.IndexOf(circleWithoutCupsToMove, lowerValuesOrWrap |> Array.maxBy (id)) + 3
-
-    let rotateCircle(currentPosition:int, cupCircle:int[]) = 
-        Array.append cupCircle.[currentPosition..(cupCircle.Length - 1)] cupCircle.[0..(currentPosition - 1)] 
-
-    let rotateCircleByOne(cupCircle:int[]) = rotateCircle(1, cupCircle) 
 
     let cutAndShunt(cupCircle:int[]) =
         let destinationPosition = getDestinationPosition(cupCircle)
