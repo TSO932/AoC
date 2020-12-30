@@ -16,7 +16,6 @@ type Day14Part1 () =
     [<Test>]
     member this.GetBinaryFromDecimal0() = Assert.AreEqual("0", Day14Part1.getBinaryFromDecimal (0))
 
-
     [<Test>]
     member this.GetDecimalFromBinary7() = Assert.AreEqual(7, Day14Part1.getDecimalFromBinary ("111"))
 
