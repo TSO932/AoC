@@ -1,6 +1,5 @@
 namespace AoC2020
 open System.Collections.Generic
-open System
 
 module Day14Part2 =
 

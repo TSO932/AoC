@@ -15,4 +15,7 @@ type Day14Part2 () =
     member this.ConvertMaskError() = Assert.Throws<ArgumentException> (fun() -> Day14Part2.convertMask("00X10012") |> ignore) |> ignore
 
     [<Test>]
+    member this.GetBinaryFromDecimal() = Assert.AreEqual("101001000100001000001000000100000001", Day14Part2.getBinaryFromDecimal (44092653825L))
+
+    [<Test>]
     member this.InitializeFerryDockingProgram() = Assert.AreEqual(208, Day14Part2.initializeFerryDockingProgram(File.ReadAllLines("../../../data/Day14/test2.txt")))
