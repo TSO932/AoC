@@ -60,6 +60,7 @@ let main argv =
     // printfn "Day 17 Part 2: %i" (Day17Part2.countActiveCells(File.ReadAllLines("../input/Day17/input.txt")))
 
     printfn "Day 18 Part 1: %i" (Day18Part1.sumValues(File.ReadAllLines("../input/Day18/input.txt")))
+    printfn "Day 18 Part 2: %i" (Day18Part2.sumValues(File.ReadAllLines("../input/Day18/input.txt")))
 
     // printfn "Day 20 Part 1: %i" (Day20Part1.findCorners(File.ReadAllLines("../input/Day20/input.txt")))
     // printfn "Day 20 Part 1 Elapsed Milliseconds: %f " (PerformanceMeasure.measurePerformance(Day20Part1.findCorners, File.ReadAllLines("../input/Day20/input.txt")))
