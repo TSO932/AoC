@@ -48,8 +48,8 @@ let main argv =
     // printfn "Day 12 Part 1: %i" (Day12Part1.navigate(File.ReadAllLines("../input/Day12/input.txt")))
     // printfn "Day 12 Part 2: %i" (Day12Part2.navigate(File.ReadAllLines("../input/Day12/input.txt")))
 
-    printfn "Day 14 Part 1: %i" (Day14Part1.initializeFerryDockingProgram(File.ReadAllLines("../input/Day14/input.txt")))
-    printfn "Day 14 Part 2: %i" (Day14Part2.initializeFerryDockingProgram(File.ReadAllLines("../input/Day14/input.txt")))
+    // printfn "Day 14 Part 1: %i" (Day14Part1.initializeFerryDockingProgram(File.ReadAllLines("../input/Day14/input.txt")))
+    // printfn "Day 14 Part 2: %i" (Day14Part2.initializeFerryDockingProgram(File.ReadAllLines("../input/Day14/input.txt")))
 
     // let startingNumbers = Day15Part1.getStartingNumbers(File.ReadAllLines("../input/Day15/input.txt"))
     // printfn "Day 15 Part 1: %i" (Day15Part1.playMemoryGame(startingNumbers))
@@ -58,6 +58,8 @@ let main argv =
     
     // printfn "Day 17 Part 1: %i" (Day17Part1.countActiveCells(File.ReadAllLines("../input/Day17/input.txt")))
     // printfn "Day 17 Part 2: %i" (Day17Part2.countActiveCells(File.ReadAllLines("../input/Day17/input.txt")))
+
+    printfn "Day 18 Part 1: %i" (Day18Part1.sumValues(File.ReadAllLines("../input/Day18/input.txt")))
 
     // printfn "Day 20 Part 1: %i" (Day20Part1.findCorners(File.ReadAllLines("../input/Day20/input.txt")))
     // printfn "Day 20 Part 1 Elapsed Milliseconds: %f " (PerformanceMeasure.measurePerformance(Day20Part1.findCorners, File.ReadAllLines("../input/Day20/input.txt")))
