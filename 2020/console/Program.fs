@@ -63,8 +63,7 @@ let main argv =
     printfn "Day 18 Part 2: %i" (Day18Part2.sumValues(File.ReadAllLines("../input/Day18/input.txt")))
 
     printfn "Day 19 Part 1: %i" (Day19Part1.countValidMessages(File.ReadAllLines("../input/Day19/input.txt")))
-
-    
+    printfn "Day 19 Part 2: %i" (Day19Part2.countValidMessages(File.ReadAllLines("../input/Day19/input.txt")))   
 
     // printfn "Day 20 Part 1: %i" (Day20Part1.findCorners(File.ReadAllLines("../input/Day20/input.txt")))
     // printfn "Day 20 Part 1 Elapsed Milliseconds: %f " (PerformanceMeasure.measurePerformance(Day20Part1.findCorners, File.ReadAllLines("../input/Day20/input.txt")))
