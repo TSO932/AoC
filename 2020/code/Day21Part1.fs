@@ -42,8 +42,7 @@ module Day21Part1 =
 
         while Seq.length knownAllergenIngredients.Keys < allergenCount do
 
-            for allergenIngredientGroup in suspectAllergenIngredients |> List.groupBy fst do
-                let allergenIngredients = snd allergenIngredientGroup
+            for (_, allergenIngredients) in suspectAllergenIngredients |> List.groupBy fst do
                 if List.length allergenIngredients = 1 then
                     let allergenIngredient = List.head allergenIngredients
                     knownAllergenIngredients.Add(allergenIngredient)
