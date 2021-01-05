@@ -59,14 +59,17 @@ let main argv =
     // printfn "Day 17 Part 1: %i" (Day17Part1.countActiveCells(File.ReadAllLines("../input/Day17/input.txt")))
     // printfn "Day 17 Part 2: %i" (Day17Part2.countActiveCells(File.ReadAllLines("../input/Day17/input.txt")))
 
-    printfn "Day 18 Part 1: %i" (Day18Part1.sumValues(File.ReadAllLines("../input/Day18/input.txt")))
-    printfn "Day 18 Part 2: %i" (Day18Part2.sumValues(File.ReadAllLines("../input/Day18/input.txt")))
+    // printfn "Day 18 Part 1: %i" (Day18Part1.sumValues(File.ReadAllLines("../input/Day18/input.txt")))
+    // printfn "Day 18 Part 2: %i" (Day18Part2.sumValues(File.ReadAllLines("../input/Day18/input.txt")))
 
-    printfn "Day 19 Part 1: %i" (Day19Part1.countValidMessages(File.ReadAllLines("../input/Day19/input.txt")))
-    printfn "Day 19 Part 2: %i" (Day19Part2.countValidMessages(File.ReadAllLines("../input/Day19/input.txt")))   
+    // printfn "Day 19 Part 1: %i" (Day19Part1.countValidMessages(File.ReadAllLines("../input/Day19/input.txt")))
+    // printfn "Day 19 Part 2: %i" (Day19Part2.countValidMessages(File.ReadAllLines("../input/Day19/input.txt")))   
 
     // printfn "Day 20 Part 1: %i" (Day20Part1.findCorners(File.ReadAllLines("../input/Day20/input.txt")))
     // printfn "Day 20 Part 1 Elapsed Milliseconds: %f " (PerformanceMeasure.measurePerformance(Day20Part1.findCorners, File.ReadAllLines("../input/Day20/input.txt")))
+
+    printfn "Day 21 Part 1: %i" (Day21Part1.countSafeIngredients (File.ReadAllLines("../input/Day21/input.txt")))
+    printfn "Day 21 Part 2: %s" (Day21Part2.listDangerousIngredients (File.ReadAllLines("../input/Day21/input.txt")))
 
     // printfn "Day 22 Part 1: %i" (Day22Part1.playCombat(File.ReadAllLines("../input/Day22/input.txt")))
     // printfn "Day 22 Part 2: %i" (Day22Part2.playCombat(File.ReadAllLines("../input/Day22/input.txt")))
