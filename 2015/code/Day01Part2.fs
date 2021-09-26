@@ -1,7 +1,5 @@
 namespace AoC2015
 
-open System.Collections.Generic
-
 module Day01Part2 =
     let getFirstStepIntoBasement (input:seq<string>) =
 

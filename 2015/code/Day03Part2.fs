@@ -1,9 +1,6 @@
 namespace AoC2015
 
-open System.Collections.Generic
-
 module Day03Part2 =
-
 
     let moveSleigh (direction:char, house:int*int) =
 

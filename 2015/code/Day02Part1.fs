@@ -1,7 +1,5 @@
 namespace AoC2015
 
-open System.Collections.Generic
-
 module Day02Part1 =
 
     let getAreaForPresent (box:string) =

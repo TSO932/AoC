@@ -1,7 +1,5 @@
 namespace AoC2015
 
-open System.Collections.Generic
-
 module Day01Part1 =
     let getFloor (input:seq<string>) =
 
