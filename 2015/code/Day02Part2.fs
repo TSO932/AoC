@@ -15,4 +15,4 @@ module Day02Part2 =
 
     let getTotalLength (input:seq<string>) =
 
-        input |> Seq.sumBy (fun b -> getLengthForPresent b)
+        input |> Seq.sumBy getLengthForPresent

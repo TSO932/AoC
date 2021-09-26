@@ -8,11 +8,11 @@ open AoC2015
 type Day03Part2 () =
 
     [<Test>]
-    member this.countExample1() = Assert.AreEqual(3, Day03Part2.countHouses ("^>"))
+    member this.CountExample1() = Assert.AreEqual(3, Day03Part2.countHouses ("^>"))
 
     [<Test>]
-    member this.countExample2() = Assert.AreEqual(3, Day03Part2.countHouses ("^>v<"))
+    member this.CountExample2() = Assert.AreEqual(3, Day03Part2.countHouses ("^>v<"))
 
     [<Test>]
-    member this.countExample3() = Assert.AreEqual(11, Day03Part2.countHouses ("^v^v^v^v^v"))
+    member this.CountExample3() = Assert.AreEqual(11, Day03Part2.countHouses ("^v^v^v^v^v"))
 

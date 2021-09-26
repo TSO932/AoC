@@ -8,10 +8,10 @@ open AoC2015
 type Day02Part2 () =
 
     [<Test>]
-    member this.example1() = Assert.AreEqual(34, Day02Part2.getLengthForPresent "2x3x4")
+    member this.Example1() = Assert.AreEqual(34, Day02Part2.getLengthForPresent "2x3x4")
 
     [<Test>]
-    member this.example2() = Assert.AreEqual(14, Day02Part2.getLengthForPresent "1x1x10")
+    member this.Example2() = Assert.AreEqual(14, Day02Part2.getLengthForPresent "1x1x10")
 
     [<Test>]
-    member this.total() = Assert.AreEqual(34 + 14, Day02Part2.getTotalLength [|"1x1x10"; "2x3x4"|])
+    member this.Total() = Assert.AreEqual(34 + 14, Day02Part2.getTotalLength [|"1x1x10"; "2x3x4"|])

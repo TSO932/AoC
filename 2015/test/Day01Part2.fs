@@ -8,7 +8,7 @@ open AoC2015
 type Day01Part2 () =
 
     [<Test>]
-    member this.example1() = Assert.AreEqual(1, Day01Part2.getFirstStepIntoBasement ([|")"|]))
+    member this.Example1() = Assert.AreEqual(1, Day01Part2.getFirstStepIntoBasement ([|")"|]))
 
     [<Test>]
-    member this.example2() = Assert.AreEqual(5, Day01Part2.getFirstStepIntoBasement ([|"()())"|]))
+    member this.Example2() = Assert.AreEqual(5, Day01Part2.getFirstStepIntoBasement ([|"()())"|]))
