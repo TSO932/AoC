@@ -16,4 +16,4 @@ module Day02Part1 =
 
     let getTotalArea (input:seq<string>) =
 
-        input |> Seq.sumBy (fun b -> getAreaForPresent b)
+        input |> Seq.sumBy getAreaForPresent
