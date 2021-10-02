@@ -14,5 +14,7 @@ let main argv =
     printfn "Day  4 Part 2: %i" (Day04Part2.getAdventCoin (File.ReadAllLines("../input/Day04/input.txt")))
     printfn "Day  5 Part 1: %i" (Day05Part1.countNiceStrings (File.ReadAllLines("../input/Day05/input.txt")))
     printfn "Day  5 Part 2: %i" (Day05Part2.countNiceStrings (File.ReadAllLines("../input/Day05/input.txt")))
+    printfn "Day  6 Part 1: %i" (Day06Part1.followInstructions (File.ReadAllLines("../input/Day06/input.txt")))
+    printfn "Day  6 Part 1: %i" (Day06Part2.followInstructions (File.ReadAllLines("../input/Day06/input.txt")))
 
     0 // return an integer exit code
