@@ -26,27 +26,27 @@ type Day07Part1 () =
 
     [<Test>]
     member this.ApplyExample1() =
-        this.signalBoard.ApplyInstruction "99 -> x"
-        this.signalBoard.ApplyInstruction "123 -> x"
+        this.signalBoard.ApplyInstruction (Day07Part1.parseInstruction "99 -> x")
+        this.signalBoard.ApplyInstruction (Day07Part1.parseInstruction "123 -> x")
         Assert.AreEqual(123, this.signalBoard.GetSignalValue "x"  )
 
     [<Test>]
     member this.ApplyExample2() =
-        this.signalBoard.ApplyInstruction "3 -> x"
-        this.signalBoard.ApplyInstruction "7 -> y"
-        this.signalBoard.ApplyInstruction "x AND y -> z"
+        this.signalBoard.ApplyInstruction (Day07Part1.parseInstruction "3 -> x")
+        this.signalBoard.ApplyInstruction (Day07Part1.parseInstruction "7 -> y")
+        this.signalBoard.ApplyInstruction (Day07Part1.parseInstruction "x AND y -> z")
         Assert.AreEqual(3, this.signalBoard.GetSignalValue "z"  )
     
     [<Test>]
     member this.ApplyMainExample() =
-        this.signalBoard.ApplyInstruction "123 -> x"
-        this.signalBoard.ApplyInstruction "456 -> y"
-        this.signalBoard.ApplyInstruction "x AND y -> d"
-        this.signalBoard.ApplyInstruction "x OR y -> e"
-        this.signalBoard.ApplyInstruction "x LSHIFT 2 -> f"
-        this.signalBoard.ApplyInstruction "y RSHIFT 2 -> g"
-        this.signalBoard.ApplyInstruction "NOT x -> h"
-        this.signalBoard.ApplyInstruction "NOT y -> i"
+        this.signalBoard.ApplyInstruction (Day07Part1.parseInstruction "123 -> x")
+        this.signalBoard.ApplyInstruction (Day07Part1.parseInstruction "456 -> y")
+        this.signalBoard.ApplyInstruction (Day07Part1.parseInstruction "x AND y -> d")
+        this.signalBoard.ApplyInstruction (Day07Part1.parseInstruction "x OR y -> e")
+        this.signalBoard.ApplyInstruction (Day07Part1.parseInstruction "x LSHIFT 2 -> f")
+        this.signalBoard.ApplyInstruction (Day07Part1.parseInstruction "y RSHIFT 2 -> g")
+        this.signalBoard.ApplyInstruction (Day07Part1.parseInstruction "NOT x -> h")
+        this.signalBoard.ApplyInstruction (Day07Part1.parseInstruction "NOT y -> i")
 
         Assert.AreEqual(72,    this.signalBoard.GetSignalValue "d"  )
         Assert.AreEqual(507,   this.signalBoard.GetSignalValue "e"  )
@@ -58,4 +58,9 @@ type Day07Part1 () =
         Assert.AreEqual(456,   this.signalBoard.GetSignalValue "y"  )
 
     [<Test>]
-    member _.getSignalValueA() = Assert.AreEqual(72, Day07Part1.getSignalValueA ([|"123 -> x"; "456 -> y"; "x AND y -> a"|]))
+    member _.GetSignalValueA() = Assert.AreEqual(72, Day07Part1.getSignalValueA ([|"123 -> x"; "456 -> y"; "x AND y -> a"|]))
+
+
+    
+    [<Test>]
+    member _.GetSignalValueBBBBBBBBB() = Assert.AreEqual(0, Day07Part1.getSignalValueA ([|"0 -> c"; "1674 -> b"|]))

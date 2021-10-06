@@ -21,36 +21,49 @@ module Day07Part1 =
      type SignalBoard() =
           let signals = new Dictionary<string, uint16>()
 
+          let isReady(instr:Instruction) =
+
+               let isKnownValue(input:string) = fst (UInt16.TryParse input) || fst (signals.TryGetValue input)
+
+               match instr.op with
+                    | "AND" | "OR" -> isKnownValue instr.in1 && isKnownValue instr.in2
+                    | _                           -> isKnownValue instr.in1
+
           member _.GetSignalValue(signal:string) =
                match signals.TryGetValue (signal) with
                | true, result -> result
                | _            -> 0us
 
-          member this.ApplyInstruction(instruction:string) =
+          member this.ApplyInstruction(instruction:Instruction) =
   
                let getVal(input:string) =
                     match UInt16.TryParse input with
                     | true, result -> result
                     | _            -> this.GetSignalValue(input)
 
-               let instr = parseInstruction(instruction)
+               let outVal = match instruction.op with
+                              | "NOT"     -> ~~~ getVal(instruction.in1)
+                              | "AND"     -> getVal(instruction.in1) &&& getVal(instruction.in2)
+                              | "OR"      -> getVal(instruction.in1) ||| getVal(instruction.in2)
+                              | "LSHIFT"  -> getVal(instruction.in1) <<< int instruction.in2
+                              | "RSHIFT"  -> getVal(instruction.in1) >>> int instruction.in2
+                              | _         -> getVal(instruction.in1)
 
-               let outVal = match instr.op with
-                              | "NOT"     -> ~~~ getVal(instr.in1)
-                              | "AND"     -> getVal(instr.in1) &&& getVal(instr.in2)
-                              | "OR"      -> getVal(instr.in1) ||| getVal(instr.in2)
-                              | "LSHIFT"  -> getVal(instr.in1) <<< int instr.in2
-                              | "RSHIFT"  -> getVal(instr.in1) >>> int instr.in2
-                              | _         -> getVal(instr.in1)
+               signals.Remove(instruction.out) |> ignore
+               signals.Add(instruction.out, outVal)
 
-               signals.Remove(instr.out) |> ignore
-               signals.Add(instr.out, outVal)
+          member this.ApplyInstructions(instructions:seq<Instruction>) =
 
-          member this.ApplyInstructions(instructions:seq<string>) =
-               instructions |> Seq.iter this.ApplyInstruction
+               let mutable remainingInstructions = Set.ofSeq instructions
+
+               while remainingInstructions |> Set.isEmpty |> not do
+                    let readyInstructions = remainingInstructions |> Seq.groupBy isReady |> Seq.filter fst |> Seq.collect snd |> Set.ofSeq
+                    remainingInstructions <- remainingInstructions |> Set.filter (fun i -> Seq.contains i readyInstructions |> not)
+                    readyInstructions |> Seq.iter this.ApplyInstruction
 
      let getSignalValueA(instructions:seq<string>) =
           let sb = SignalBoard()
-          sb.ApplyInstructions(instructions)
+
+          sb.ApplyInstructions(instructions |> Seq.map parseInstruction)
           sb.GetSignalValue("a")
           
