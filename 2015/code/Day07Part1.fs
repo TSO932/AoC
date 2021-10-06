@@ -54,12 +54,13 @@ module Day07Part1 =
 
           member this.ApplyInstructions(instructions:seq<Instruction>) =
 
-               let mutable remainingInstructions = Set.ofSeq instructions
-
-               while remainingInstructions |> Set.isEmpty |> not do
-                    let readyInstructions = remainingInstructions |> Seq.groupBy isReady |> Seq.filter fst |> Seq.collect snd |> Set.ofSeq
-                    remainingInstructions <- remainingInstructions |> Set.filter (fun i -> Seq.contains i readyInstructions |> not)
-                    readyInstructions |> Seq.iter this.ApplyInstruction
+               let rec applyInstr(remainingInstructions:seq<Instruction>) =
+                    if remainingInstructions |> Seq.isEmpty |> not then
+                         let readyInstructions = remainingInstructions |> Seq.groupBy isReady |> Seq.filter fst |> Seq.collect snd |> Set.ofSeq
+                         readyInstructions |> Seq.iter this.ApplyInstruction
+                         remainingInstructions |> Seq.filter (fun i -> Seq.contains i readyInstructions |> not) |> applyInstr
+               
+               applyInstr instructions
 
      let getSignalValueA(instructions:seq<string>) =
           let sb = SignalBoard()
