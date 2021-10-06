@@ -17,6 +17,7 @@ let main argv =
     printfn "Day  6 Part 1: %i" (Day06Part1.followInstructions (File.ReadAllLines("../input/Day06/input.txt")))
     printfn "Day  6 Part 2: %i" (Day06Part2.followInstructions (File.ReadAllLines("../input/Day06/input.txt")))
     printfn "Day  7 Part 1: %i" (Day07Part1.getSignalValueA (File.ReadAllLines("../input/Day07/input.txt")))
+    printfn "Day  7 Part 2: %i" (Day07Part2.getSignalValueA (File.ReadAllLines("../input/Day07/input.txt")))
     // printfn "Day  7 Part 1: %i" (Day07Part1.getSignalValueA (File.ReadAllLines("../Code/aoC/2015/input/Day07/input.txt")))
 
     0 // return an integer exit code
