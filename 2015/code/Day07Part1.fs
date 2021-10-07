@@ -34,12 +34,12 @@ module Day07Part1 =
                | true, result -> result
                | _            -> 0us
 
-          member this.ApplyInstruction(instruction:Instruction) =
+          member _.ApplyInstruction(instruction:Instruction) =
   
                let getVal(input:string) =
                     match UInt16.TryParse input with
                     | true, result -> result
-                    | _            -> this.GetSignalValue(input)
+                    | _            -> signals.[input]
 
                let outVal = match instruction.op with
                               | "NOT"     -> ~~~ getVal(instruction.in1)

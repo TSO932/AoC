@@ -58,9 +58,12 @@ type Day07Part1 () =
         Assert.AreEqual(456,   this.signalBoard.GetSignalValue "y"  )
 
     [<Test>]
-    member _.GetSignalValueA() = Assert.AreEqual(72, Day07Part1.getSignalValueA ([|"123 -> x"; "456 -> y"; "x AND y -> a"|]))
+    member this.NonSequential() =
+        this.signalBoard.ApplyInstructions ([|Day07Part1.parseInstruction "x OR y -> p"
+                                            ; Day07Part1.parseInstruction "9 -> x"
+                                            ; Day07Part1.parseInstruction "6 -> y" |])
 
+        Assert.AreEqual(15, this.signalBoard.GetSignalValue "p"  )
 
-    
     [<Test>]
-    member _.GetSignalValueBBBBBBBBB() = Assert.AreEqual(0, Day07Part1.getSignalValueA ([|"0 -> c"; "1674 -> b"|]))
+    member _.GetSignalValueA() = Assert.AreEqual(72, Day07Part1.getSignalValueA ([|"123 -> x"; "456 -> y"; "x AND y -> a"|]))
