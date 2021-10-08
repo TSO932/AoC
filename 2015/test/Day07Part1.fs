@@ -13,16 +13,16 @@ type Day07Part1 () =
         this.signalBoard <- Day07Part1.SignalBoard()
 
     [<Test>]
-    member _.ParseExample1() = Assert.AreEqual({Day07Part1.op = "" ; Day07Part1.in1 = "123" ; Day07Part1.in2 = "" ; Day07Part1.out = "x"}, Day07Part1.parseInstruction "123 -> x")
+    member _.ParseExample1() = Assert.AreEqual({Day07Part1.Op = "" ; Day07Part1.In1 = "123" ; Day07Part1.In2 = "" ; Day07Part1.Out = "x"}, Day07Part1.parseInstruction "123 -> x")
     
     [<Test>]
-    member _.ParseExample2() = Assert.AreEqual({Day07Part1.op = "AND" ; Day07Part1.in1 = "x" ; Day07Part1.in2 = "y" ; Day07Part1.out = "z"}, Day07Part1.parseInstruction "x AND y -> z")
+    member _.ParseExample2() = Assert.AreEqual({Day07Part1.Op = "AND" ; Day07Part1.In1 = "x" ; Day07Part1.In2 = "y" ; Day07Part1.Out = "z"}, Day07Part1.parseInstruction "x AND y -> z")
 
     [<Test>]
-    member _.ParseExample3() = Assert.AreEqual({Day07Part1.op = "LSHIFT" ; Day07Part1.in1 = "p" ; Day07Part1.in2 = "2" ; Day07Part1.out = "q"}, Day07Part1.parseInstruction "p LSHIFT 2 -> q")
+    member _.ParseExample3() = Assert.AreEqual({Day07Part1.Op = "LSHIFT" ; Day07Part1.In1 = "p" ; Day07Part1.In2 = "2" ; Day07Part1.Out = "q"}, Day07Part1.parseInstruction "p LSHIFT 2 -> q")
 
     [<Test>]
-    member _.ParseExample4() = Assert.AreEqual({Day07Part1.op = "NOT" ; Day07Part1.in1 = "e" ; Day07Part1.in2 = "" ; Day07Part1.out = "f"}, Day07Part1.parseInstruction "NOT e -> f")
+    member _.ParseExample4() = Assert.AreEqual({Day07Part1.Op = "NOT" ; Day07Part1.In1 = "e" ; Day07Part1.In2 = "" ; Day07Part1.Out = "f"}, Day07Part1.parseInstruction "NOT e -> f")
 
     [<Test>]
     member this.ApplyExample1() =

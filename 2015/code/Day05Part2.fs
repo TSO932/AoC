@@ -1,7 +1,5 @@
 namespace AoC2015
 
-open System.Text.RegularExpressions
-
 module Day05Part2 =
 
     let isValidRule1 (input:string) =
