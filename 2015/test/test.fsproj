@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <Compile Include="Day*Part*.fs" />
+    <Compile Include="CommonFunctions.fs" />
   </ItemGroup>
 
   <ItemGroup>
