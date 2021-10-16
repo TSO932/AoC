@@ -1,7 +1,5 @@
 namespace AoC2015
 
-open System.Text.RegularExpressions
-
 module Day08Part2 =
 
     let countCharacters(strings:seq<string>) =
