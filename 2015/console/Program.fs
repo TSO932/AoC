@@ -21,4 +21,7 @@ let main argv =
     // printfn "Day  7 Part 1: %i" (Day07Part1.getSignalValueA (File.ReadAllLines("../Code/aoC/2015/input/Day07/input.txt")))
     printfn "Day  8 Part 1: %i" (Day08Part1.countCharacters (File.ReadAllLines("../input/Day08/input.txt")))
     printfn "Day  8 Part 2: %i" (Day08Part2.countCharacters (File.ReadAllLines("../input/Day08/input.txt")))
+    printfn "Day  9 Part 1: %i" (Day09Part1.findShortestDistance (File.ReadAllLines("../input/Day09/input.txt")))
+    printfn "Day  9 Part 2: %i" (Day09Part2.findLongestDistance (File.ReadAllLines("../input/Day09/input.txt")))
+
     0 // return an integer exit code

@@ -10,4 +10,25 @@ type Day09Part1 () =
     member _.AndEveryDiscoIveBeenIn() = Assert.AreEqual(("Paris", "Berlin", 878), Day09Part1.parseDistance ("Paris to Berlin = 878"))
 
     [<Test>]
-    member _.getListOfCities() = Assert.AreEqual([|"Paris"; "Berlin"; "London"; "Dublin"|], Day09Part1.getSequenceOfCities ([|"Paris to Berlin = 878"; "London to Dublin = 464"; "London to London = 0"|]))
+    member _.getListOfCities() = Assert.AreEqual(["Paris"; "Berlin"; "London"; "Dublin"], Day09Part1.getListOfCities ([|("Paris", "Berlin", 878); ("London", "Dublin", 464); ("London", "London", 0)|]))
+
+    [<Test>]
+    member _.distance() =
+        let distances = new Day09Part1.DistanceDictionary()
+        distances.Populate([|("A", "B", 1); ("B", "C", 7); ("C", "A", 12)|])
+        Assert.AreEqual(7, distances.Get("B", "C"))
+
+    [<Test>]
+    member _.distanceBackwards() =
+        let distances = (new Day09Part1.DistanceDictionary())
+        distances.Populate([|("A", "B", 1); ("B", "C", 7); ("C", "A", 12)|])
+        Assert.AreEqual(12, distances.Get("A", "C"))
+
+    [<Test>]
+    member _.Example() = Assert.AreEqual(605, Day09Part1.findShortestDistance ([|"London to Dublin = 464"; "London to Belfast = 518"; "Dublin to Belfast = 141"|]))
+
+
+
+
+
+    
