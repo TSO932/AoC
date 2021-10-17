@@ -10,17 +10,17 @@ type Day09Part1 () =
     member _.AndEveryDiscoIveBeenIn() = Assert.AreEqual(("Paris", "Berlin", 878), Day09Part1.parseDistance ("Paris to Berlin = 878"))
 
     [<Test>]
-    member _.getListOfCities() = Assert.AreEqual(["Paris"; "Berlin"; "London"; "Dublin"], Day09Part1.getListOfCities ([|("Paris", "Berlin", 878); ("London", "Dublin", 464); ("London", "London", 0)|]))
+    member _.GetListOfCities() = Assert.AreEqual(["Paris"; "Berlin"; "London"; "Dublin"], Day09Part1.getListOfCities ([|("Paris", "Berlin", 878); ("London", "Dublin", 464); ("London", "London", 0)|]))
 
     [<Test>]
-    member _.distance() =
-        let distances = new Day09Part1.DistanceDictionary()
+    member _.Distance() =
+        let distances = Day09Part1.DistanceDictionary()
         distances.Populate([|("A", "B", 1); ("B", "C", 7); ("C", "A", 12)|])
         Assert.AreEqual(7, distances.Get("B", "C"))
 
     [<Test>]
-    member _.distanceBackwards() =
-        let distances = (new Day09Part1.DistanceDictionary())
+    member _.DistanceBackwards() =
+        let distances = Day09Part1.DistanceDictionary()
         distances.Populate([|("A", "B", 1); ("B", "C", 7); ("C", "A", 12)|])
         Assert.AreEqual(12, distances.Get("A", "C"))
 

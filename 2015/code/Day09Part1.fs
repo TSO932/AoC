@@ -9,11 +9,11 @@ module Day09Part1 =
         splits.[0], splits.[2], int splits.[4]
 
     let getListOfCities(distances:seq<string*string*int>) =
-        distances |> Seq.map (fun (a, b, _) -> [ a ; b ]) |> Seq.concat |> Seq.distinct |> List.ofSeq
+        distances |> Seq.collect (fun (a, b, _) -> [ a ; b ]) |> Seq.distinct |> List.ofSeq
 
     let getDictionaryOfDistances(distances:seq<string*string*int>) =
 
-        distances |> Seq.map (fun (a, b, _) -> [ a ; b ]) |> Seq.concat |> Seq.distinct
+        distances |> Seq.collect (fun (a, b, _) -> [ a ; b ]) |> Seq.distinct
 
     type DistanceDictionary() =
 
@@ -30,18 +30,10 @@ module Day09Part1 =
     let findShortestDistance(distances:seq<string>) =
         let dists = distances |> Seq.map parseDistance
 
-        let distDic = new DistanceDictionary()
+        let distDic = DistanceDictionary()
         distDic.Populate(dists)
 
-        let rec distribute e = function
-        | [] -> [[e]]
-        | x::xs' as xs -> (e::xs)::[for xs in distribute e xs' -> x::xs]
-
-        let rec permute = function
-        | [] -> [[]]
-        | e::xs -> List.collect (distribute e) (permute xs)
-
-        permute(getListOfCities(dists)) |> Seq.map ((fun route -> Seq.pairwise route ) >> (fun seqOfPairs -> seqOfPairs |> Seq.sumBy (fun ab -> distDic.Get(ab)))) |> Seq.min
+        CommonFunctions.permute(getListOfCities(dists)) |> Seq.map (Seq.pairwise >> (fun seqOfPairs -> seqOfPairs |> Seq.sumBy (fun ab -> distDic.Get(ab)))) |> Seq.min
 
         
                 
