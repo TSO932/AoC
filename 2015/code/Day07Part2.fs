@@ -1,8 +1,5 @@
 namespace AoC2015
 
-open System
-open System.Collections.Generic
-
 module Day07Part2 =
 
      let getSignalValueA(instructions:seq<string>) =
@@ -17,5 +14,5 @@ module Day07Part2 =
                     instruction
 
           let sb2 = Day07Part1.SignalBoard()
-          sb2.ApplyInstructions(instructions |> Seq.map seedB |> Seq.map Day07Part1.parseInstruction)
+          sb2.ApplyInstructions(instructions |> Seq.map (seedB >> Day07Part1.parseInstruction))
           sb2.GetSignalValue("a")
