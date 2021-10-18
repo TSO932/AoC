@@ -1,23 +1,27 @@
 namespace AoC2015
 
+open System
+
 module Day10Part1 =
 
-    let rec lookAndSayLoop(say:string, look:string) =
+    let rec lookAndSayLoop(say:list<sbyte>, look:list<sbyte>) =
 
-        let charList = look |> Array.ofSeq |> Seq.pairwise |> Seq.map (fun (a,b) -> (a = b, b)) |> Seq.append [|(true, look.[0])|] |> List.ofSeq
-        let remaining = Seq.skipWhile (fun (b, _) -> b) charList
-        let newSay = say + string (Seq.length charList - Seq.length remaining) + string (snd (Seq.head charList))
+        let remaining = match List.tryFindIndex ((<>) look.Head) look.Tail with
+                         | Some index -> look.[index + 1..]
+                         | None       -> List.Empty
+
+        let newSay = List.append say [sbyte (List.length look - List.length remaining); List.head look]
 
         if Seq.isEmpty remaining then
             newSay
         else
-            let newLook = look.[(Seq.length look - Seq.length remaining)..]
+            let newLook = look.[(List.length look - List.length remaining)..]
             lookAndSayLoop(newSay, newLook)
 
-    let lookAndSay(look:string) = lookAndSayLoop("", look)
+    let lookAndSay(look:list<sbyte>) = lookAndSayLoop([], look)
 
     let lookAndSayRepeat(repeats:int, look:string) =
-        let mutable say = look
+        let mutable say = look |> List.ofSeq |> List.map (Char.GetNumericValue >> sbyte)
         for i in 1 .. repeats do
             say <- lookAndSay(say)
             printfn "%i %i" i (say.Length)
