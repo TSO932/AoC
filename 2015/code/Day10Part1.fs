@@ -12,7 +12,7 @@ module Day10Part1 =
 
         let newSay = List.append say [sbyte (List.length look - List.length remaining); List.head look]
 
-        if Seq.isEmpty remaining then
+        if List.isEmpty remaining then
             newSay
         else
             let newLook = look.[(List.length look - List.length remaining)..]
@@ -22,7 +22,9 @@ module Day10Part1 =
 
     let lookAndSayRepeat(repeats:int, look:string) =
         let mutable say = look |> List.ofSeq |> List.map (Char.GetNumericValue >> sbyte)
-        for i in 1 .. repeats do
+
+        for _ in 1 .. repeats do
             say <- lookAndSay(say)
-            printfn "%i %i" i (say.Length)
+
         say.Length
+        
