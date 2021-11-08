@@ -31,7 +31,7 @@ module Day11Part1 =
     let ruleOne(password:string) =
         password |> Seq.windowed 3 |> Seq.exists (fun x -> isStraight(x))
     
-    let ruleTwo(password:string) = not (Regex.IsMatch (password, "[iol]"))
+    let ruleTwo(password:string) = Regex.IsMatch (password, "[iol]") |> not
 
     let ruleThree(password:string) =
         let firstMatch = Regex.Match(password, @"(.)\1+")
