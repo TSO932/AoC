@@ -28,5 +28,5 @@ let main argv =
     printfn "Day 10 Part 2: %i" (Day10Part2.lookAndSayRepeat (50, File.ReadAllLines("../input/Day10/input.txt").[0]))
     printfn "Day 11 Part 1: %s" (Day11Part1.getNextPassword (File.ReadAllLines("../input/Day11/input.txt").[0]))
     printfn "Day 11 Part 2: %s" (Day11Part2.getNextPassword (File.ReadAllLines("../input/Day11/input.txt").[0]))
-
+    printfn "Day 12 Part 1: %i" (Day12Part1.sumNumbers (File.ReadAllLines("../input/Day12/input.txt").[0]))
     0 // return an integer exit code
