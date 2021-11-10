@@ -4,6 +4,4 @@ open System
 
 module Day12Part1 =
 
-    let rec sumNumbers(input:string) =
-        input.Split [|':'; '{'; '}'; '['; ']'; '"'; ','|] |> Seq.map (fun s -> Int32.TryParse s) |> Seq.sumBy snd
-        
+    let rec sumNumbers(input:string) = input.Split [|':'; '{'; '}'; '['; ']'; '"'; ','|] |> Seq.map Int32.TryParse |> Seq.sumBy snd

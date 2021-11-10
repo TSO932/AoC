@@ -29,4 +29,5 @@ let main argv =
     printfn "Day 11 Part 1: %s" (Day11Part1.getNextPassword (File.ReadAllLines("../input/Day11/input.txt").[0]))
     printfn "Day 11 Part 2: %s" (Day11Part2.getNextPassword (File.ReadAllLines("../input/Day11/input.txt").[0]))
     printfn "Day 12 Part 1: %i" (Day12Part1.sumNumbers (File.ReadAllLines("../input/Day12/input.txt").[0]))
+    printfn "Day 12 Part 2: %i" (Day12Part2.sumNumbers (File.ReadAllLines("../input/Day12/input.txt").[0]))
     0 // return an integer exit code
