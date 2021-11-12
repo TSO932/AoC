@@ -10,7 +10,7 @@ type Day09Part1 () =
     member _.AndEveryDiscoIveBeenIn() = Assert.AreEqual(("Paris", "Berlin", 878), Day09Part1.parseDistance ("Paris to Berlin = 878"))
 
     [<Test>]
-    member _.GetListOfCities() = Assert.AreEqual(["Paris"; "Berlin"; "London"; "Dublin"], Day09Part1.getListOfCities ([|("Paris", "Berlin", 878); ("London", "Dublin", 464); ("London", "London", 0)|]))
+    member _.GetListOfCities() = CollectionAssert.AreEqual(["Paris"; "Berlin"; "London"; "Dublin"], Day09Part1.getListOfCities ([|("Paris", "Berlin", 878); ("London", "Dublin", 464); ("London", "London", 0)|]))
 
     [<Test>]
     member _.Distance() =

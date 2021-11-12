@@ -12,7 +12,6 @@ module Day09Part1 =
         distances |> Seq.collect (fun (a, b, _) -> [ a ; b ]) |> Seq.distinct |> List.ofSeq
 
     let getDictionaryOfDistances(distances:seq<string*string*int>) =
-
         distances |> Seq.collect (fun (a, b, _) -> [ a ; b ]) |> Seq.distinct
 
     type DistanceDictionary() =
