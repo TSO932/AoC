@@ -11,9 +11,6 @@ module Day13Part1 =
     let getListOfPeople(people:seq<string*string*int>) =
         people |> Seq.map (fun (a, _, _) -> a) |> Seq.distinct |> List.ofSeq
 
-    let getDictionaryOfDistances(distances:seq<string*string*int>) =
-        distances |> Seq.collect (fun (a, b, _) -> [ a ; b ]) |> Seq.distinct
-
     type PeoplePairingDictionary() =
 
         let dictionary = new Dictionary<string*string, int>()

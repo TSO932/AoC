@@ -31,4 +31,5 @@ let main argv =
     printfn "Day 12 Part 1: %i" (Day12Part1.sumNumbers (File.ReadAllLines("../input/Day12/input.txt").[0]))
     printfn "Day 12 Part 2: %i" (Day12Part2.sumNumbers (File.ReadAllLines("../input/Day12/input.txt").[0]))
     printfn "Day 13 Part 1: %i" (Day13Part1.findHappiestSeatingPlan (File.ReadAllLines("../input/Day13/input.txt")))
+    printfn "Day 13 Part 2: %i" (Day13Part2.findHappiestSeatingPlan (File.ReadAllLines("../input/Day13/input.txt")))
     0 // return an integer exit code
