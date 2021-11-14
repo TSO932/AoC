@@ -15,6 +15,5 @@ module Day14Part1 =
         ((time / (deer.Duration + deer.Rest)) * deer.Duration + min deer.Duration (time % (deer.Duration + deer.Rest))) * deer.Speed
     
     let getWinningDistance(deer:seq<string>) =
-        deer |> Seq.map parseReindeerPerformanceStats |> Seq.map (fun d -> getDistance (d, 2503)) |> Seq.max
+        deer |> Seq.map (parseReindeerPerformanceStats >> (fun d -> getDistance (d, 2503))) |> Seq.max
  
-               
