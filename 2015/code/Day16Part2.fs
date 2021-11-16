@@ -1,7 +1,5 @@
 namespace AoC2015
 
-open System.Collections.Generic
-
 module Day16Part2 =
 
     let isTheRightSue(sue:Day16Part1.Sue) =
