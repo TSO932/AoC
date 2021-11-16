@@ -1,7 +1,6 @@
 namespace AoC2015.Tests
 
 open NUnit.Framework
-open AoC2015
 
 [<TestFixture>] 
 type Day15Part1 () =
