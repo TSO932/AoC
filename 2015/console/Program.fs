@@ -34,4 +34,6 @@ let main argv =
     printfn "Day 13 Part 2: %i" (Day13Part2.findHappiestSeatingPlan (File.ReadAllLines("../input/Day13/input.txt")))
     printfn "Day 14 Part 1: %i" (Day14Part1.getWinningDistance (File.ReadAllLines("../input/Day14/input.txt")))
     printfn "Day 14 Part 2: %i" (Day14Part2.getWinningScore (File.ReadAllLines("../input/Day14/input.txt")))
+    printfn "Day 15 Part 1: %i" (Day15Part1.getTotalScore ())
+    printfn "Day 15 Part 2: %i" (Day15Part2.getTotalScore ())
     0 // return an integer exit code
