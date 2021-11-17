@@ -12,3 +12,15 @@ module CommonFunctions =
     let rec permute = function
     | [] -> [[]]
     | e::xs -> List.collect (distribute e) (permute xs)
+
+
+    // http://www.fssnip.net/2z/title/All-combinations-of-list-elements
+    
+    let allCombinations lst =
+        let rec comb accLst elemLst =
+            match elemLst with
+            | h::t ->
+                let next = [h]::List.map (fun el -> h::el) accLst @ accLst
+                comb next t
+            | _ -> accLst
+        comb [] lst
