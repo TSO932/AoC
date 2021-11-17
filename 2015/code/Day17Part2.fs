@@ -11,7 +11,6 @@ module Day17Part2 =
         let minNumberOfContainers = exactFits |> Seq.min 
         exactFits |> Seq.filter (fun i -> i = minNumberOfContainers) |> Seq.length
 
-
     let countCombinationsOfContainers (sizes:seq<string>) =
         countCombinations (Seq.map int sizes, 150) 
 
