@@ -24,7 +24,7 @@ let main argv =
     printfn "Day  9 Part 1: %i" (Day09Part1.findShortestDistance (File.ReadAllLines("../input/Day09/input.txt")))
     printfn "Day  9 Part 2: %i" (Day09Part2.findLongestDistance (File.ReadAllLines("../input/Day09/input.txt")))
     printfn "Day 10 Part 1: %i" (Day10Part2.lookAndSayRepeat (40, File.ReadAllLines("../input/Day10/input.txt").[0]))
-    //printfn "Day 10 Part 1 Elapsed Milliseconds: %f " (PerformanceMeasure.measurePerformance(Day10Part1.lookAndSayRepeat, (25, File.ReadAllLines("../input/Day10/input.txt").[0])))
+    // printfn "Day 10 Part 1 Elapsed Milliseconds: %f " (PerformanceMeasure.measurePerformance(Day10Part1.lookAndSayRepeat, (25, File.ReadAllLines("../input/Day10/input.txt").[0])))
     printfn "Day 10 Part 2: %i" (Day10Part2.lookAndSayRepeat (50, File.ReadAllLines("../input/Day10/input.txt").[0]))
     printfn "Day 11 Part 1: %s" (Day11Part1.getNextPassword (File.ReadAllLines("../input/Day11/input.txt").[0]))
     printfn "Day 11 Part 2: %s" (Day11Part2.getNextPassword (File.ReadAllLines("../input/Day11/input.txt").[0]))
@@ -43,5 +43,10 @@ let main argv =
     printfn "Day 18 Part 1: %i" (Day18Part1.countLights (File.ReadAllLines("../input/Day18/input.txt")))
     printfn "Day 18 Part 2: %i" (Day18Part2.countLights (File.ReadAllLines("../input/Day18/input.txt")))
     printfn "Day 19 Part 1: %i" (Day19Part1.countDistinctMolecules (File.ReadAllLines("../input/Day19/input.txt")))
+    //printfn "Day 19 Part 2: %i" (Day19Part2.countFewestReactionSteps (File.ReadAllLines("../input/Day19/input.txt")))
+    //printfn "Day 19 Part 1 Elapsed Milliseconds: %f " (PerformanceMeasure.measurePerformance(Day19Part2.countFewestReactionSteps, (File.ReadAllLines("../input/Day19/input.txt"))))
 
-    0 // return an integer exit code
+    printfn "Day 20 Part 1: %i" (Day20Part1.getFirstHouse(File.ReadAllLines("../input/Day20/input.txt").[0]))
+    printfn "Day 20 Part 2: %i" (Day20Part2.getFirstHouse(File.ReadAllLines("../input/Day20/input.txt").[0]))
+
+    0 // return an integer exit code 

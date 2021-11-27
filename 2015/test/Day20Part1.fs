@@ -34,13 +34,10 @@ type Day20Part1 () =
     member _.GetScoreHouseNumber9Gets130Presents() = Assert.AreEqual(130, Day20Part1.getScore(9))
 
     [<Test>]
-    member _.GetFirstHouseWithTargetScoreOrMore() = Assert.AreEqual(6, Day20Part1.getFirstHouseWithTargetScoreOrMore(120))
+    member _.GetFirstHouseWithTargetScoreOrMore() = Assert.AreEqual(6, Day20Part1.getFirstHouseWithTargetScoreOrMore(120, Day20Part1.getScore))
 
     [<Test>]
-    member _.GetFirstHouseWithTargetScoreOrMoreExactMatch() = Assert.AreEqual(6, Day20Part1.getFirstHouseWithTargetScoreOrMore(120))
+    member _.GetFirstHouseWithTargetScoreOrMoreExactMatch() = Assert.AreEqual(6, Day20Part1.getFirstHouseWithTargetScoreOrMore(120, Day20Part1.getScore))
 
     [<Test>]
-    member _.GetFirstHouseWithTargetScoreOrMoreNotExactMatch() = Assert.AreEqual(8, Day20Part1.getFirstHouseWithTargetScoreOrMore(125))
-
-    [<Test>]
-    member _.Get() = Assert.AreEqual(0, Day20Part1.getFirstHouseWithTargetScoreOrMore(33100000)) 
+    member _.GetFirstHouseWithTargetScoreOrMoreNotExactMatch() = Assert.AreEqual(8, Day20Part1.getFirstHouseWithTargetScoreOrMore(125, Day20Part1.getScore))
