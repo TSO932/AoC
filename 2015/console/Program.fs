@@ -46,7 +46,11 @@ let main argv =
     //printfn "Day 19 Part 2: %i" (Day19Part2.countFewestReactionSteps (File.ReadAllLines("../input/Day19/input.txt")))
     //printfn "Day 19 Part 1 Elapsed Milliseconds: %f " (PerformanceMeasure.measurePerformance(Day19Part2.countFewestReactionSteps, (File.ReadAllLines("../input/Day19/input.txt"))))
 
-    printfn "Day 20 Part 1: %i" (Day20Part1.getFirstHouse(File.ReadAllLines("../input/Day20/input.txt").[0]))
-    printfn "Day 20 Part 2: %i" (Day20Part2.getFirstHouse(File.ReadAllLines("../input/Day20/input.txt").[0]))
+    // printfn "Day 20 Part 1: %i" (Day20Part1.getFirstHouse(File.ReadAllLines("../input/Day20/input.txt").[0]))
+    // printfn "Day 20 Part 2: %i" (Day20Part2.getFirstHouse(File.ReadAllLines("../input/Day20/input.txt").[0]))
+    
+    printfn "Day 21 Part 1: %i" (Day21Part1.findCheapestWinningOption())
+    printfn "Day 21 Part 2: %i" (Day21Part2.findDearestLosingOption())
+
 
     0 // return an integer exit code 
