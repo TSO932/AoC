@@ -2,16 +2,12 @@ namespace AoC2015
 
 module Day21Part1 =
 
-  type DamageAndArmour(damage:int, armour:int) = 
-    member this.Damage = damage
-    member this.Armour = armour
-  
   type Item(name:string, cost:int, damage:int, armour:int) =
-    member this.Name = name
-    member this.Cost = cost
-    member this.Damage = damage
-    member this.Armour = armour
-    override this.ToString() = name
+    member _.Name = name
+    member _.Cost = cost
+    member _.Damage = damage
+    member _.Armour = armour
+    override _.ToString() = name
 
   type Stats(cost:int, damage:int, armour:int, hitPoints:int) =
  
@@ -31,10 +27,10 @@ module Day21Part1 =
         defender.HitPoints - max 1 (attacker.Damage - defender.Armour)
       )
 
-    member this.HitPoints = hitPoints
-    member this.Cost = cost
-    member this.Damage = damage
-    member this.Armour = armour
+    member _.HitPoints = hitPoints
+    member _.Cost = cost
+    member _.Damage = damage
+    member _.Armour = armour
 
   let getOptions() = 
    

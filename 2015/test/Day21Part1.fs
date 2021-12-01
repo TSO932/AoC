@@ -13,8 +13,4 @@ type Day21Part1 () =
     member _.Fight() = Assert.AreEqual(true, Day21Part1.fight(Day21Part1.Stats(0, 5, 5, 8), Day21Part1.Stats(0, 7, 2, 12)))
 
     [<Test>]
-    member _.Find() = Assert.AreEqual(0, Day21Part1.findCheapestWinningOption())
-
-    [<Test>]
-    member _.Find2() = Assert.AreEqual(0, Day21Part2.findDearestLosingOption())
-    
+    member _.Find() = Assert.AreEqual(111, Day21Part1.findCheapestWinningOption())
