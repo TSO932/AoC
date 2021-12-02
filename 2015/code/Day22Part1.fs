@@ -99,10 +99,7 @@ module Day22Part1 =
 
         getOptions(newOptions, numberOfRounds - 1)
        
-
-  // 797  850 870 all too low
-  //  890 not the answer
-
+       
   let find(wizard:Wizard, boss:Boss, numberOfRounds:int) =
     
     getOptions([["Magic Missile"]; ["Drain"]; ["Shield"]; ["Poison"]; ["Recharge"]], numberOfRounds)
