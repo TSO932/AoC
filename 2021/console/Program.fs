@@ -12,4 +12,6 @@ let main argv =
 
     printfn "Day  4 Part 1: %A" (Day04Part1.playBingo (File.ReadAllLines("../input/Day04/input.txt")))
     printfn "Day  4 Part 2: %A" (Day04Part2.playBingo (File.ReadAllLines("../input/Day04/input.txt")))
+
+    printfn "Day  5 Part 1: %A" (Day05Part1.findCrossings (File.ReadAllLines("../input/Day05/input.txt")))
     0 // return an integer exit code 
