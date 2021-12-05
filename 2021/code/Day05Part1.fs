@@ -11,7 +11,9 @@ module Day05Part1 =
         let yA = if y1 <= y2 then y1 else y2
         let yB = if y1 <= y2 then y2 else y1
 
-        grid |> Array2D.mapi (fun y x v -> if x >= xA && x <= xB && y >= yA && y <= yB && (yA = yB || xA = xB || (includeDiagonals && (x - xA = y - yA))) then v + 1 else v)
+        grid |> Array2D.mapi (fun y x v -> if x >= xA && x <= xB && y >= yA && y <= yB && (yA = yB || xA = xB
+                                                || (includeDiagonals && ( (x1 < x2 && y1 < y2) || (x1 > x2 && y1 > y2) ) && x - x1 = y - y1)
+                                                || (includeDiagonals && ( (x1 < x2 && y1 > y2) || (x1 > x2 && y1 < y2) ) && x - x1 = y1 - y)) then v + 1 else v)
 
     type Line(box:string) = 
 

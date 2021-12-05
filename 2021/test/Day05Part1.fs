@@ -4,7 +4,7 @@ open NUnit.Framework
 open AoC2021
 
 [<TestFixture>] 
-type Day05604Part1 () =
+type Day05Part1 () =
 
     [<Test>]
     member _.countPointsWithNOrMore() = Assert.AreEqual(3, Day05Part1.countPointsWithNOrMore(array2D [[0; 1; 9];
@@ -56,12 +56,10 @@ type Day05604Part1 () =
                                                                 Day05Part1.applyLine(array2D [[0; 1; 9]; [4; 1; 0]; [1; 2; 0]], 2, 2, 1, 1, true))
 
     [<Test>]
-    [<Ignore("Known Bug.")>]
     member _.ApplyDiagonalC() = CollectionAssert.AreEqual(array2D [[0; 1; 10]; [4; 2; 0]; [2; 2; 0]],
                                                                 Day05Part1.applyLine(array2D [[0; 1; 9]; [4; 1; 0]; [1; 2; 0]], 0, 2, 2, 0, true))
 
     [<Test>]
-    [<Ignore("Known Bug.")>]
     member _.ApplyDiagonalD() = CollectionAssert.AreEqual(array2D [[0; 2; 9]; [5; 1; 0]; [1; 2; 0]],
                                                                 Day05Part1.applyLine(array2D [[0; 1; 9]; [4; 1; 0]; [1; 2; 0]], 1, 0, 0, 1, true))
 
