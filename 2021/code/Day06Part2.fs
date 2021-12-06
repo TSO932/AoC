@@ -14,7 +14,7 @@ module Day06Part2 =
         else
             fishTimer(ageFishes fish, day + 1, target)
 
-    let countFish (input:string, target:int) = fishTimer(input.Split ',' |> Seq.map int |> CommonFunctions.countById64, 0, target)
+    let countFish (input:string, target:int) = fishTimer(input.Split ',' |> Seq.map int |> Seq.countBy id |> Seq.map (fun (d, q) -> (d, int64 q)), 0, target)
 
     let run (input:string) = countFish(input, 256)
 
