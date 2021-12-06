@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="CommonFunctions.fs" />
     <Compile Include="Day*Part*.fs" />
   </ItemGroup>
 
