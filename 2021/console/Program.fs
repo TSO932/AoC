@@ -18,4 +18,6 @@ let main argv =
 
     printfn "Day  6 Part 1: %A" (Day06Part1.run (File.ReadAllLines("../input/Day06/input.txt")[0]))
     printfn "Day  6 Part 2: %A" (Day06Part2.run (File.ReadAllLines("../input/Day06/input.txt")[0]))
+
+    printfn "Day  7 Part 1: %i" (Day07Part1.run (File.ReadAllLines("../input/Day07/input.txt")[0]))
     0 // return an integer exit code 
