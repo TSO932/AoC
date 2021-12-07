@@ -7,5 +7,5 @@ open AoC2021
 type Day07Part2 () =
 
     [<Test>]
-    member _.example() = Assert.AreEqual(37, Day07Part2.findMinimum([16;1;2;0;4;2;7;1;2;14]))
+    member _.example() = Assert.AreEqual(168, Day07Part2.findMinimum([16;1;2;0;4;2;7;1;2;14]))
 

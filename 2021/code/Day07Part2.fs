@@ -10,7 +10,7 @@ module Day07Part2 =
 
     let findMinimum (crabs:seq<int64>) =
 
-        seq {Seq.min crabs .. Seq.max crabs} |> Seq.map (fun x -> crabs |> Seq.sumBy (fun c -> sumFormula(if x > c then x - c else c - x))) |> Seq.min
+        seq {Seq.min crabs .. Seq.max crabs} |> Seq.map (fun x -> crabs |> Seq.sumBy (fun c -> sumFormula(abs (c - x)))) |> Seq.min
 
     let run(input:string) = findMinimum(input.Split ',' |> Seq.map int64)
 
