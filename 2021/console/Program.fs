@@ -16,9 +16,15 @@ let main argv =
     // printfn "Day  5 Part 1: %i" (Day05Part1.findCrossings (File.ReadAllLines("../input/Day05/input.txt")))
     // printfn "Day  5 Part 2: %i" (Day05Part2.findCrossings (File.ReadAllLines("../input/Day05/input.txt")))
 
-    // printfn "Day  6 Part 1: %A" (Day06Part1.run (File.ReadAllLines("../input/Day06/input.txt")[0]))
-    // printfn "Day  6 Part 2: %A" (Day06Part2.run (File.ReadAllLines("../input/Day06/input.txt")[0]))
+    // printfn "Day  6 Part 1: %i" (Day06Part1.run (File.ReadAllLines("../input/Day06/input.txt")[0]))
+    // printfn "Day  6 Part 2: %i" (Day06Part2.run (File.ReadAllLines("../input/Day06/input.txt")[0]))
 
-    printfn "Day  7 Part 1: %i" (Day07Part1.run (File.ReadAllLines("../input/Day07/input.txt")[0]))
-    printfn "Day  7 Part 2: %i" (Day07Part2.run (File.ReadAllLines("../input/Day07/input.txt")[0]))
+    // printfn "Day  7 Part 1: %i" (Day07Part1.run (File.ReadAllLines("../input/Day07/input.txt")[0]))
+    // printfn "Day  7 Part 2: %i" (Day07Part2.run (File.ReadAllLines("../input/Day07/input.txt")[0]))
+
+
+    printfn "Day  8 Part 1: %i" (Day08Part1.countAppearances (File.ReadAllLines("../input/Day08/input.txt")))
+    printfn "Day  8 Part 2: %i" (Day08Part2.sumOutputs (File.ReadAllLines("../input/Day08/input.txt")))
+
+    printfn "Day  9 Part 1: %i" (Day09Part1.sumOfLocalMinima (File.ReadAllLines("../input/Day09/input.txt")))
     0 // return an integer exit code 
