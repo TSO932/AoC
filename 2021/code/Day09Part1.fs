@@ -15,9 +15,4 @@ module Day09Part1 =
             else
                 0 
         
-        let riskLevels = matrix |> Array2D.mapi (fun h v c -> valueIfLocalMinumum(v, h, c)) |> Seq.cast<int> |> Seq.fold (fun acc x -> acc + x) 0
-
-
-        printfn "%A" riskLevels
-
-        riskLevels
+        matrix |> Array2D.mapi (fun h v c -> valueIfLocalMinumum(v, h, c)) |> Seq.cast<int> |> Seq.fold (fun acc x -> acc + x) 0
