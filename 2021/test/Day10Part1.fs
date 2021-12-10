@@ -23,22 +23,34 @@ type Day10Part1 () =
 
 
     [<Test>]
-    member _.Example01() = Assert.AreEqual(0, Day10Part1.getFirstIllegalCharacter ("[({(<(())[]>[[{[]{<()<>>"))
+    member _.Example01() = Assert.AreEqual(0, Day10Part1.scoreFirstIllegalCharacter ("[({(<(())[]>[[{[]{<()<>>"))
     [<Test>]
-    member _.Example02() = Assert.AreEqual(0, Day10Part1.getFirstIllegalCharacter ("[(()[<>])]({[<{<<[]>>("))
+    member _.Example02() = Assert.AreEqual(0, Day10Part1.scoreFirstIllegalCharacter ("[(()[<>])]({[<{<<[]>>("))
     [<Test>]
-    member _.Example03() = Assert.AreEqual(1197, Day10Part1.getFirstIllegalCharacter ("{([(<{}[<>[]}>{[]{[(<()>"))
+    member _.Example03() = Assert.AreEqual(1197, Day10Part1.scoreFirstIllegalCharacter ("{([(<{}[<>[]}>{[]{[(<()>"))
     [<Test>]
-    member _.Example04() = Assert.AreEqual(0, Day10Part1.getFirstIllegalCharacter ("(((({<>}<{<{<>}{[]{[]{}"))
+    member _.Example04() = Assert.AreEqual(0, Day10Part1.scoreFirstIllegalCharacter ("(((({<>}<{<{<>}{[]{[]{}"))
     [<Test>]
-    member _.Example05() = Assert.AreEqual(3, Day10Part1.getFirstIllegalCharacter ("[[<[([]))<([[{}[[()]]]"))
+    member _.Example05() = Assert.AreEqual(3, Day10Part1.scoreFirstIllegalCharacter ("[[<[([]))<([[{}[[()]]]"))
     [<Test>]
-    member _.Example06() = Assert.AreEqual(57, Day10Part1.getFirstIllegalCharacter ("[{[{({}]{}}([{[{{{}}([]"))
+    member _.Example06() = Assert.AreEqual(57, Day10Part1.scoreFirstIllegalCharacter ("[{[{({}]{}}([{[{{{}}([]"))
     [<Test>]
-    member _.Example07() = Assert.AreEqual(0, Day10Part1.getFirstIllegalCharacter ("{<[[]]>}<{[{[{[]{()[[[]"))
+    member _.Example07() = Assert.AreEqual(0, Day10Part1.scoreFirstIllegalCharacter ("{<[[]]>}<{[{[{[]{()[[[]"))
     [<Test>]
-    member _.Example08() = Assert.AreEqual(3, Day10Part1.getFirstIllegalCharacter ("[<(<(<(<{}))><([]([]()"))
+    member _.Example08() = Assert.AreEqual(3, Day10Part1.scoreFirstIllegalCharacter ("[<(<(<(<{}))><([]([]()"))
     [<Test>]
-    member _.Example09() = Assert.AreEqual(25137, Day10Part1.getFirstIllegalCharacter ("<{([([[(<>()){}]>(<<{{"))
+    member _.Example09() = Assert.AreEqual(25137, Day10Part1.scoreFirstIllegalCharacter ("<{([([[(<>()){}]>(<<{{"))
     [<Test>]
-    member _.Example10() = Assert.AreEqual(0, Day10Part1.getFirstIllegalCharacter ("<{([{{}}[<[[[<>{}]]]>[]]"))
+    member _.Example10() = Assert.AreEqual(0, Day10Part1.scoreFirstIllegalCharacter ("<{([{{}}[<[[[<>{}]]]>[]]"))
+
+    [<Test>]
+    member _.Example() = Assert.AreEqual(26397, Day10Part1.getScore (["[({(<(())[]>[[{[]{<()<>>";
+                                                                             "[(()[<>])]({[<{<<[]>>(";
+                                                                             "{([(<{}[<>[]}>{[]{[(<()>";
+                                                                             "(((({<>}<{<{<>}{[]{[]{}";
+                                                                             "[[<[([]))<([[{}[[()]]]";
+                                                                             "[{[{({}]{}}([{[{{{}}([]";
+                                                                             "{<[[]]>}<{[{[{[]{()[[[]";
+                                                                             "[<(<(<(<{}))><([]([]()";
+                                                                             "<{([([[(<>()){}]>(<<{{";
+                                                                             "<{([{{}}[<[[[<>{}]]]>[]]"]))

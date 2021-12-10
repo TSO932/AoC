@@ -22,7 +22,7 @@ module Day10Part1 =
         | -1 -> true
         | _  -> false
 
-    let getFirstIllegalCharacter(input:string) =
+    let scoreFirstIllegalCharacter(input:string) =
         let simplified = removeAllPairedBrackets(input)
         let ind = simplified.IndexOfAny [|']'; '}'; '>'; ')'|]
         if ind = -1 then
@@ -34,4 +34,4 @@ module Day10Part1 =
                 | _   -> 25137 // '>' expected
 
     let getScore(input:seq<string>) =
-        input |> Seq.sumBy getFirstIllegalCharacter
+        input |> Seq.sumBy scoreFirstIllegalCharacter

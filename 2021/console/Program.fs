@@ -28,4 +28,6 @@ let main argv =
     printfn "Day  9 Part 1: %i" (Day09Part1.sumOfLocalMinima (File.ReadAllLines("../input/Day09/input.txt")))
     printfn "Day  9 Part 2: %i" (Day09Part2.productOfBiggestBasins (File.ReadAllLines("../input/Day09/input.txt")))
 
+    printfn "Day 10 Part 1: %i" (Day10Part1.getScore (File.ReadAllLines("../input/Day10/input.txt")))
+    printfn "Day 10 Part 2: %A" (Day10Part2.getMedianScore (File.ReadAllLines("../input/Day10/input.txt")))
     0 // return an integer exit code 
