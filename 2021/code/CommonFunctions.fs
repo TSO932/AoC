@@ -1,4 +1,6 @@
-namespace AoC2015
+namespace AoC2021
+
+open System.Collections.Generic
 
 module CommonFunctions =
 
@@ -24,3 +26,15 @@ module CommonFunctions =
                 comb next t
             | _ -> accLst
         comb [] lst
+
+
+    // https://codereview.stackexchange.com/questions/167679/counting-letter-frequencies-from-an-input-file
+
+    let countById64 xs =
+        let counts = Dictionary<_,_>()
+        for x in xs do
+            match counts.TryGetValue x with
+            | true,  c -> counts[x] <- c + 1L
+            | false, _ -> counts[x] <- 1L
+        counts
+        |> Seq.map (fun (KeyValue kv) -> kv)
