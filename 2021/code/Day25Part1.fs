@@ -63,12 +63,12 @@ module Day25Part1 =
 
     let rec countSteps(seafloor:char[,], stepCount:int) =
         
-        let theSeaCucmbersHaveMoved = seafloor |> move
+        let theSeaCucumbersHaveMoved = seafloor |> move
         
-        if areEqual(seafloor, theSeaCucmbersHaveMoved) then
+        if areEqual(seafloor, theSeaCucumbersHaveMoved) then
             stepCount + 1
         else
-            countSteps(theSeaCucmbersHaveMoved, stepCount + 1)
+            countSteps(theSeaCucumbersHaveMoved, stepCount + 1)
 
     let run(input:seq<string>) =
         countSteps(getSeafloor(input), 0)
