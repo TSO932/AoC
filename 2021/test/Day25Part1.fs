@@ -82,7 +82,7 @@ type Day25Part1 () =
         Assert.AreEqual( '.',  Array2D.get result 0 10, "y = 0, x = 10")
 
     [<Test>]
-    member _.MovetExample2A() =
+    member _.MoveExample2A() =
 
         let start = Day25Part1.getSeafloor( [".........."; ".>v....v.."; ".......>.."; ".........." ] )
 
@@ -101,7 +101,7 @@ type Day25Part1 () =
         Assert.AreEqual( 'v',  Array2D.get result 2 7, "y = 2, x = 7")
 
     [<Test>]
-    member _.MovetExample3A() =
+    member _.MoveExample3A() =
 
         let start = Day25Part1.getSeafloor( [ "...>..."; "......."; "......>"; "v.....>"; "......>"; ".......";
                                                  "..vvv.." ] )
@@ -115,8 +115,34 @@ type Day25Part1 () =
         Assert.AreEqual( 'v',  Array2D.get result 0 2, "y = 0, x = 2")
         Assert.AreEqual( 'v',  Array2D.get result 0 3, "y = 0, x = 3")
         Assert.AreEqual( '>',  Array2D.get result 0 4, "y = 0, x = 4")
-       // Assert.AreEqual( '>',  Array2D.get result 3 0, "y = 3, x = 0")
-        // Assert.AreEqual( 'v',  Array2D.get result 4 0, "y = 4, x = 0")
-        // Assert.AreEqual( '>',  Array2D.get result 4 6, "y = 4, x = 6")
-        // Assert.AreEqual( '>',  Array2D.get result 5 0, "y = 5, x = 0")
-        //Assert.AreEqual( 'v',  Array2D.get result 5 4, "y = 5, x = 4")
+        Assert.AreEqual( '>',  Array2D.get result 2 0, "y = 2, x = 0")
+        Assert.AreEqual( 'v',  Array2D.get result 3 0, "y = 3, x = 0")
+        Assert.AreEqual( '>',  Array2D.get result 3 6, "y = 3, x = 6")
+        Assert.AreEqual( '>',  Array2D.get result 4 0, "y = 4, x = 0")
+        Assert.AreEqual( 'v',  Array2D.get result 6 4, "y = 6, x = 4")
+
+    [<Test>]
+    member _.AreEqualTrue() =
+
+        let a = Day25Part1.getSeafloor( ["abc"; "def" ] )
+        let b = Day25Part1.getSeafloor( ["abc"; "def" ] )
+        Assert.AreEqual ( true, Day25Part1.areEqual(a, b) )
+
+    [<Test>]
+    member _.AreEqualFalse() =
+
+        let a = Day25Part1.getSeafloor( ["abc"; "def" ] )
+        let b = Day25Part1.getSeafloor( ["abc"; "fed" ] )
+        Assert.AreEqual ( false, Day25Part1.areEqual(a, b) )
+
+    [<Test>]
+    member _.MoveExample4() =
+
+        let start = Day25Part1.getSeafloor( [ "v...>>.vv>"; ".vv>>.vv.."; ">>.>v>...v"; ">>v>>.>.v."; "v>v.vv.v..";
+                                                ">.>>..v...";".vv..>.>v."; "v.v..>>v.v"; "....v..v.>" ] )
+
+        Assert.AreEqual( 58, Day25Part1.countSteps(start, 0) )
+
+
+
+

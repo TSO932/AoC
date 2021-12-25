@@ -37,9 +37,11 @@ let main argv =
     // printfn "Day 12 Part 1: %i" (Day12Part1.run (File.ReadAllLines("../input/Day12/input.txt")))
     // printfn "Day 12 Part 2: %i" (Day12Part2.run (File.ReadAllLines("../input/Day12/input.txt")))
     
-    printfn "Day 13 Part 1: %i" (Day13Part1.CountAfterFirstFold (File.ReadAllLines("../input/Day13/input.txt")))
+    // printfn "Day 13 Part 1: %i" (Day13Part1.CountAfterFirstFold (File.ReadAllLines("../input/Day13/input.txt")))
 
-    for line in (Day13Part2.DoAllFolds (File.ReadAllLines("../input/Day13/input.txt"))) do
-        printfn "Day 13 Part 2: %s" line 
+    // for line in (Day13Part2.DoAllFolds (File.ReadAllLines("../input/Day13/input.txt"))) do
+    //     printfn "Day 13 Part 2: %s" line 
+
+    printfn "Day 25 Part 1: %i" (Day25Part1.run (File.ReadAllLines("../input/Day25/input.txt")))
 
     0 // return an integer exit code 

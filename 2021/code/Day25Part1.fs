@@ -16,12 +16,14 @@ module Day25Part1 =
 
         let move(y:int, x:int, c:char) =
 
-            let x1 = if x = width - 1 then 0 else x + 1
-            if c = '>' && input[y, x1] = '.' then
-                Array2D.set output y x1 c
-            else
-                if not (c = '.') then
-                    Array2D.set output y x c
+            if c = '>' then
+                let x1 = if x = width - 1 then 0 else x + 1
+                if input[y, x1] = '.' then
+                    Array2D.set output y x1 c
+                else
+                    Array2D.set output y x  c
+
+            if c = 'v' then Array2D.set output y x c
 
         input |> Array2D.mapi (fun y x c -> move(y, x, c)) |> ignore
 
@@ -35,12 +37,14 @@ module Day25Part1 =
 
         let move(y:int, x:int, c:char) =
 
-            let y1 = if y = height - 1 then 0 else y + 1
-            if c = 'v' && input[y1, x] = '.' then
-                Array2D.set output y1 x c
-            else
-                if not (c = '.') then
-                    Array2D.set output y x c
+            if c = 'v' then
+                let y1 = if y = height - 1 then 0 else y + 1
+                if input[y1, x] = '.' then
+                    Array2D.set output y1 x c
+                else
+                    Array2D.set output y  x c
+
+            if c = '>' then Array2D.set output y x c
 
         input |> Array2D.mapi (fun y x c -> move(y, x, c)) |> ignore
 
@@ -50,3 +54,21 @@ module Day25Part1 =
         input
         |> moveEast
         |> moveSouth
+
+    let areEqual(a:char[,], b:char[,]) =
+        a
+        |> Array2D.mapi (fun y x c -> b[y, x] = c)
+        |> Seq.cast<bool>
+        |> Seq.contains false |> not
+
+    let rec countSteps(seafloor:char[,], stepCount:int) =
+        
+        let theSeaCucmbersHaveMoved = seafloor |> move
+        
+        if areEqual(seafloor, theSeaCucmbersHaveMoved) then
+            stepCount + 1
+        else
+            countSteps(theSeaCucmbersHaveMoved, stepCount + 1)
+
+    let run(input:seq<string>) =
+        countSteps(getSeafloor(input), 0)
