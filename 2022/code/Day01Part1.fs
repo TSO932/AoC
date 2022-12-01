@@ -5,6 +5,5 @@ module Day01Part1 =
         input
             |> Seq.scan (fun accum entry -> if entry = "" then (fst accum + 1, 0) else (fst accum, int entry)) (0, 0)
             |> Seq.groupBy fst
-            |> Seq.map snd
-            |> Seq.map (fun s -> s |> Seq.sumBy snd ) 
+            |> Seq.map (fun (_, s) -> s |> Seq.sumBy snd ) 
             |> Seq.max
