@@ -6,8 +6,8 @@ module Day03Part1 =
 
         let compartments = backpack |> Seq.splitInto 2 |> Array.ofSeq
 
-        compartments.[0]
-            |> Seq.filter (fun c -> Seq.exists (fun c1 -> c1 = c) compartments.[1])
+        compartments[0]
+            |> Seq.filter (fun c -> Seq.exists (fun c1 -> c1 = c) compartments[1])
             |> Seq.head
 
     let GetPriority (item:char) =
