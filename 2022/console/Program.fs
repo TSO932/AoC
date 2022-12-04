@@ -10,5 +10,7 @@ let main argv =
     printfn "Day  2 Part 2: %A" (Day02Part2.GetTotal (File.ReadAllLines("../input/Day02/input.txt")))
     printfn "Day  3 Part 1: %A" (Day03Part1.GetSumOfPriorities (File.ReadAllLines("../input/Day03/input.txt")))
     printfn "Day  3 Part 2: %A" (Day03Part2.GetSumOfPriorities (File.ReadAllLines("../input/Day03/input.txt")))
+    printfn "Day  4 Part 1: %A" (Day04Part1.GetNumberOfPairsWhereOneRangeFullyContainsTheOther (File.ReadAllLines("../input/Day04/input.txt")))
+    printfn "Day  4 Part 3: %A" (Day04Part2.GetNumberOfOverlaps (File.ReadAllLines("../input/Day04/input.txt")))
 
     0 // return an integer exit code 
