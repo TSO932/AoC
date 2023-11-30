@@ -16,7 +16,6 @@ let main argv =
     printfn "Day  7 Part 1: %A" (Day07Part1.runProgram (File.ReadAllLines("../input/Day07/input.txt")))
     printfn "Day  7 Part 2: %A" (Day07Part2.runProgram (File.ReadAllLines("../input/Day07/input.txt")))
     printfn "Day  8 Part 1: %A" (Day08Part1.countVisibleTrees (File.ReadAllLines("../input/Day08/input.txt")))
-
-    printfn "Day 15 Part 1: %A" (Day15Part1.GetOverlaps (File.ReadAllLines("../input/Day15/input.txt")))
+    printfn "Day  8 Part 2: %A" (Day08Part2.getMostScenicScore (File.ReadAllLines("../input/Day08/input.txt")))
 
     0 // return an integer exit code 
