@@ -76,9 +76,9 @@ type Day14Part1 () =
     [<Test>]
     member this.LargestMinusSmallest() =
 
-        let rules  = Day14Part1.parseRules(this.example)
+        let rules   = Day14Part1.parseRules(this.example)
         let polymer = Day14Part1.doSteps(rules, "NNCB", 10)
-        let result = Day14Part1.largestMinusSmallest(polymer)
+        let result  = Day14Part1.largestMinusSmallest(polymer)
 
         Assert.AreEqual( 1588, result )
 
