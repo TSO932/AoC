@@ -7,4 +7,4 @@ open _2023
 type Day01Part1 () =
 
     [<Test>]
-    member _.Example() = Assert.AreEqual(24000, Day01Part1.findElfCarryingMostCalories [|"1000"; "2000"; "3000"; ""; "4000"; ""; "5000"; "6000"; ""; "7000"; "8000"; "9000"; ""; "10000"|])
+    member _.Example() = Assert.AreEqual(142, Day01Part1.findElfCarryingMostCalories [|"1abc2"; "pqr3stu8vwx"; "a1b2c3d4e5f"; "treb7uchet"|])
