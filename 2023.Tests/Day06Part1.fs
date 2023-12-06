@@ -20,4 +20,4 @@ type Day06Part1 () =
 
     
     [<Test>]
-    member _.Part2() = Assert.AreEqual(-1L, Day06Part1.countWinners (53837288L, 333163512891532L))
+    member _.Part2() = Assert.AreEqual(39570185L, Day06Part1.countWinners (53837288L, 333163512891532L))
