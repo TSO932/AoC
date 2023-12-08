@@ -3,6 +3,7 @@
 module Day08Part2 =
 
     let countSteps (input:seq<string>) =
+
         let path = 
             input
             |> Seq.head
@@ -17,11 +18,6 @@ module Day08Part2 =
             mapEntries
             |> Seq.filter (fun m -> m[2] = 'A')
             |> Seq.map (fun m -> m[..2]) 
-        
-        let isEnd (nodes:seq<string>) =
-            nodes
-            |> Seq.filter (fun m -> m[2] <> 'Z')
-            |> Seq.isEmpty 
 
         let left =
             mapEntries
@@ -33,9 +29,8 @@ module Day08Part2 =
             |> Seq.map (fun s -> (s[..2], s[12..14]))
             |> Map
 
-        let rec counter (route, nodes:seq<string>, i) =
-    
-            if isEnd nodes then
+        let rec counter (route, node:string, i) =
+            if node[2] = 'Z' then
                 i
             else
                 let newRoute = 
@@ -44,18 +39,18 @@ module Day08Part2 =
                     else
                         route
 
-                let nextNode (node) =
+                let nextNode = 
                     match Array.head newRoute with
                         | 'L' -> left[node]
                         | _ -> right[node]
 
-                let nextNodes =
-                    nodes
-                    |> Seq.map (fun s -> nextNode s)
+                counter (Array.tail newRoute, nextNode, i + 1)
 
-                counter (Array.tail newRoute, nextNodes, i + 1)
+        startingNodes
+        |> Seq.map (fun node -> counter ([||], node, 0))
+        |> Seq.iter (fun n -> printfn "%i" n)
 
-        counter ([||], startingNodes, 0)
+        0
 
                 
 
