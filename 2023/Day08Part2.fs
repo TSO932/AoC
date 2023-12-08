@@ -2,6 +2,13 @@
 
 module Day08Part2 =
 
+    let leastCommonMultiple(input:seq<int64>) =
+        let rec gcd (x:int64) (y:int64) = if y = 0 then abs x else gcd y (x % y)
+        let lcm (x:int64) (y:int64) = x * y / (gcd x y)
+
+        input
+        |> Seq.fold (fun mult x -> lcm mult x) 1L
+
     let countSteps (input:seq<string>) =
 
         let path = 
@@ -48,9 +55,10 @@ module Day08Part2 =
 
         startingNodes
         |> Seq.map (fun node -> counter ([||], node, 0))
-        |> Seq.iter (fun n -> printfn "%i" n)
+        |> Seq.map int64
+        |> leastCommonMultiple
 
-        0
+
 
                 
 
