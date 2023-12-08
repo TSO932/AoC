@@ -10,3 +10,4 @@ printfn "Day  4 Part 2: %A" (Day04Part2.getSum (File.ReadAllLines("../2023.Input
 printfn "Day  7 Part 1: %A" (Day07Part1.rankHands (File.ReadAllLines("../2023.Input/Day07/input.txt")))
 printfn "Day  7 Part 2: %A" (Day07Part2.rankHands (File.ReadAllLines("../2023.Input/Day07/input.txt")))
 printfn "Day  8 Part 1: %A" (Day08Part1.countSteps (File.ReadAllLines("../2023.Input/Day08/input.txt")))
+printfn "Day  8 Part 2: %A" (Day08Part2.countSteps (File.ReadAllLines("../2023.Input/Day08/input.txt")))  //18727 too low
