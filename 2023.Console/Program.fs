@@ -14,3 +14,4 @@ printfn "Day  8 Part 2: %A" (Day08Part2.countSteps (File.ReadAllLines("../2023.I
 printfn "Day  9 Part 1: %A" (Day09Part1.getSum (File.ReadAllLines("../2023.Input/Day09/input.txt")))
 printfn "Day  9 Part 2: %A" (Day09Part2.getSum (File.ReadAllLines("../2023.Input/Day09/input.txt")))
 printfn "Day 10 Part 1: %A" (Day10Part1.getPipeLength (File.ReadAllLines("../2023.Input/Day10/input.txt")))
+printfn "Day 10 Part 2: %A" (Day10Part2.getArea (File.ReadAllLines("../2023.Input/Day10/input.txt")))
