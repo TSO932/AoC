@@ -15,10 +15,6 @@ type Day09Part1 () =
     [<Test>]
     member _.GetDifferencesEmpty() = CollectionAssert.AreEqual(Seq.empty, Day09Part1.getDifferences Seq.empty)
 
-    // [<Test>]
-    // member _.GetSequences() =
-    //     CollectionAssert.AreEqual([|[|0; 0|]; [|1; 1; 1|]; [|2; 3; 4; 5|]; [|1; 3; 6; 10; 15|]|], Day09Part1.getSequences [|1; 3; 6; 10; 15|])
-
     [<Test>]
     member _.GetSequences() = CollectionAssert.AreEqual([|0; 1; 5; 15|], Day09Part1.getSequences [|1; 3; 6; 10; 15|])
 
