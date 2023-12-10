@@ -54,7 +54,7 @@ module Day08Part2 =
                 counter (Array.tail newRoute, nextNode, i + 1)
 
         startingNodes
-        |> Seq.map (fun node -> counter ([||], node, 0))
+        |> Seq.map (fun node -> counter (Array.empty, node, 0))
         |> Seq.map int64
         |> leastCommonMultiple
 

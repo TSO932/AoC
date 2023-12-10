@@ -15,8 +15,8 @@ type Day04Part2 () =
     [<Test>]
     member _.Example4() = Assert.AreEqual((4, [|5|]), Day04Part2.getNewCards "Card   4: 41 92 73 84 69 | 59 84 76 51 58  5 54 83")
     [<Test>]
-    member _.Example5() = Assert.AreEqual((5, [||]), Day04Part2.getNewCards "Card   5: 87 83 26 28 32 | 88 30 70 12 93 22 82 36")
+    member _.Example5() = Assert.AreEqual((5, Seq.empty), Day04Part2.getNewCards "Card   5: 87 83 26 28 32 | 88 30 70 12 93 22 82 36")
     [<Test>]
-    member _.Example6() = Assert.AreEqual((6, [||]), Day04Part2.getNewCards "Card   6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11")
+    member _.Example6() = Assert.AreEqual((6, Seq.empty), Day04Part2.getNewCards "Card   6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11")
 
     

@@ -22,7 +22,7 @@ type Day08Part2 () =
     member _.countTreesYouCanSeeSecondTreeSame() = Assert.AreEqual(2, Day08Part2.countTreesYouCanSee ([|'2'; '4'; '2'; '9'|], '4', false))
 
     [<Test>]
-    member _.countTreesYouCanSeeEdgeCase() = Assert.AreEqual(0, Day08Part2.countTreesYouCanSee ([||], '3', false))
+    member _.countTreesYouCanSeeEdgeCase() = Assert.AreEqual(0, Day08Part2.countTreesYouCanSee (Array.empty, '3', false))
 
     [<Test>]
     member _.countTreesYouCanSeeLastTreeTaller() = Assert.AreEqual(4, Day08Part2.countTreesYouCanSee ([|'1'; '0'; '2'; '9'|], '3', false))

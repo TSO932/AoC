@@ -34,7 +34,7 @@ module Day08Part1 =
 
                 counter (Array.tail newRoute, nextNode, i + 1)
 
-        counter ([||], "AAA", 0)
+        counter (Array.empty, "AAA", 0)
 
                 
 
