@@ -4,6 +4,10 @@ open System
 
 module Day11Part1 =
 
+    let rotateGridBy90DegreesToTheRight grid = //https://fssnip.net/7Wk
+        let height, width = Array2D.length1 grid, Array2D.length2 grid
+        Array2D.init width height (fun row column -> Array2D.get grid (height - column - 1) row)
+
     let expand(input:seq<string>) =      
         
         let addRowIfEmpty(input:char[,]) =
@@ -18,10 +22,6 @@ module Day11Part1 =
             |> Seq.concat
             |> Seq.toArray
             |> array2D
-
-        let rotateGridBy90DegreesToTheRight grid = //https://fssnip.net/7Wk
-            let height, width = Array2D.length1 grid, Array2D.length2 grid
-            Array2D.init width height (fun row column -> Array2D.get grid (height - column - 1) row)
 
         input
         |> array2D
