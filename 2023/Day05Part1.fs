@@ -6,7 +6,7 @@ module Day05Part1 =
             fromValue - sourceRangeStart + destinationRangeStart
         else
             fromValue
-    let mapValueAll (fromValue, mapping:seq<int[]>) =
+    let mapValueAll (fromValue, mapping:seq<int64[]>) =
         mapping
         |> Seq.map (fun m -> mapValueSingle (fromValue, m[0], m[1], m[2]))
         |> Seq.filter ((<>) fromValue)
@@ -14,8 +14,16 @@ module Day05Part1 =
        
     let parseMapLine(line:string) =
         line.Split ' '
-        |> Seq.map int
+        |> Seq.map int64
         |> Seq.toArray
 
     let getNextValue(fromValue, input:seq<string>) =
         mapValueAll (fromValue, Seq.map parseMapLine input  )
+
+    let mapSeedToLocation(fromValue, input:seq<seq<string>>) =
+        input |> Seq.fold (fun acc map -> getNextValue (acc, map)) fromValue 
+
+    let findLowestLocation(seeds, maps) =
+        seeds
+        |> Seq.map (fun seed -> mapSeedToLocation(seed, maps))
+        |> Seq.min
