@@ -54,19 +54,19 @@ module Day05Part3 =
         let backMap = backAllLevels maps
         let seedsToCheck = getSeedsToCheck (seedInput, backMap)
 
-        printfn "backMap %A" backMap
-        printfn "seedsToCheck %A" seedsToCheck
-        printfn "seedInput %A" seedInput
+        // printfn "backMap %A" backMap
+        // printfn "seedsToCheck %A" seedsToCheck
+        // printfn "seedInput %A" seedInput
 
-        seedsToCheck
-        |> Seq.map (fun seed -> (seed, Day05Part1.mapSeedToLocation(seed, maps)))
-        |> Seq.filter (fun (_, d) -> d = 61994329L)
-        |> fun q -> printfn "61994329L: %A" q
+        // seedsToCheck
+        // |> Seq.map (fun seed -> (seed, Day05Part1.mapSeedToLocation(seed, maps)))
+        // |> Seq.filter (fun (_, d) -> d = 61994329L)
+        // |> fun q -> printfn "61994329L: %A" q
 
-        backMap
-        |> Seq.map (fun seed -> (seed, Day05Part1.mapSeedToLocation(seed, maps)))
-        |> Seq.filter (fun (_, d) -> d = 15880236L)
-        |> fun q -> printfn "15880236L: %A" q
+        // backMap
+        // |> Seq.map (fun seed -> (seed, Day05Part1.mapSeedToLocation(seed, maps)))
+        // |> Seq.filter (fun (_, d) -> d = 15880236L)
+        // |> fun q -> printfn "15880236L: %A" q
 
 
 
