@@ -21,4 +21,7 @@ printfn "Day 13 Part 1: %A" (Day13Part1.getSum (File.ReadAllLines("../2023.Input
 printfn "Day 14 Part 1: %A" (Day14Part1.getSum (File.ReadAllLines("../2023.Input/Day14/input.txt")))
 printfn "Day 15 Part 1: %A" (Day15Part1.getSum (File.ReadAllLines("../2023.Input/Day15/input.txt")[0]))
 printfn "Day 15 Part 2: %A" (Day15Part2.getSum (File.ReadAllLines("../2023.Input/Day15/input.txt")[0]))
-printfn "Day 16 Part 1: %A" (Day16Part1.countTiles (File.ReadAllLines("../2023.Input/Day16/input.txt")))
+// printfn "Day 16 Part 1: %A" (Day16Part1.countTiles (File.ReadAllLines("../2023.Input/Day16/input.txt")))
+// printfn "Day 16 Part 2: %A" (Day16Part2.countTiles (File.ReadAllLines("../2023.Input/Day16/input.txt")))
+// printfn "Day 18 Part 1: %A" (Day18Part1.getArea (File.ReadAllLines("../2023.Input/Day18/input.txt")))
+printfn "Day 19 Part 1: %A" (Day19Part1.count (File.ReadAllLines("../2023.Input/Day19/parts.txt")))
