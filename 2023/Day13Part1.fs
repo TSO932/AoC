@@ -34,11 +34,12 @@ module Day13Part1 =
         findHoriz rotated
 
     let split input =
-        let i = ref 0
+        let mutable i = 0
         input
         |> Seq.groupBy (fun x ->
-            if x = String.Empty then incr i
-            !i)
+            if x = String.Empty then
+                i <- i + 1
+            i)
         |> Seq.map snd
         |> Seq.map (fun p -> if Seq.head p = String.Empty then Seq.tail p else p)
 
