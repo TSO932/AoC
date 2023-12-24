@@ -42,6 +42,8 @@ let main argv =
     // for line in (Day13Part2.DoAllFolds (File.ReadAllLines("../input/Day13/input.txt"))) do
     //     printfn "Day 13 Part 2: %s" line 
 
-    printfn "Day 25 Part 1: %i" (Day25Part1.run (File.ReadAllLines("../input/Day25/input.txt")))
+    // printfn "Day 25 Part 1: %i" (Day25Part1.run (File.ReadAllLines("../input/Day25/input.txt")))
+
+    printfn "Day 98 Part 1: %i" (Day98Part1.getSum (File.ReadAllLines("../input/Day98/input.txt")))
 
     0 // return an integer exit code 
