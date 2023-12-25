@@ -5,3 +5,5 @@
 .ionide
 .vscode
 **/notebook
+*.Input
+.config

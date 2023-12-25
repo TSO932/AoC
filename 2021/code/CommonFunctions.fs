@@ -38,3 +38,15 @@ module CommonFunctions =
             | false, _ -> counts[x] <- 1L
         counts
         |> Seq.map (fun (KeyValue kv) -> kv)
+
+
+    // my variation on the above countById64
+
+    let sumById64 xs =
+        let sums = Dictionary<_,_>()
+        for x in xs do
+            match sums.TryGetValue x with
+            | true,  c -> sums[x] <- c + x
+            | false, _ -> sums[x] <- x
+        sums
+        |> Seq.map (fun (KeyValue kv) -> kv)

@@ -55,7 +55,7 @@ module Day11Part2 =
                 if octopuses |> Array2D.map (fun o -> o.IsFlashing) |> Seq.cast<bool> |> Seq.exists ((=) true) then 
                     incrementNeighbours()
                 else
-                    printfn "%i" (output |> Array2D.map (fun c -> c.TEMP_hasFlashedThisStep) |> Seq.cast<bool> |> Seq.filter (fun b -> b = true) |> Seq.length)
+                    // printfn "%i" (output |> Array2D.map (fun c -> c.TEMP_hasFlashedThisStep) |> Seq.cast<bool> |> Seq.filter (fun b -> b = true) |> Seq.length)
                     output |> Array2D.iter (fun c -> c.EndOfStep())
 
             incrementNeighbours()                 

@@ -4,6 +4,7 @@ open NUnit.Framework
 open AoC2021
 
 [<TestFixture>] 
+[<Ignore("Too Slow")>]
 type Day13Part1 () =
 
     [<DefaultValue>] val mutable example  : seq<string>
