@@ -1,12 +1,12 @@
-namespace AoC2021
+namespace _2023
 
 open System
 
-module Day98Part1 =
+module Day24Part1 =
     let getPointAndVelocity(input:string) =
 
         let numbers = input.Replace("@", ",").Replace(" ","").Split ","
-        (double numbers.[0], double numbers.[1], double numbers.[2], double numbers.[3], double numbers.[4], double numbers.[5])
+        (double numbers[0], double numbers[1], double numbers[2], double numbers[3], double numbers[4], double numbers[5])
 
     let getLine(px:double, py:double, pz:double, dx:double, dy:double, dz:double) =
         let a = dy / dx
@@ -62,3 +62,5 @@ module Day98Part1 =
         |> fun x -> x / 2
     
     let getSum(input:seq<string>) = getSumInternal(input, rangeRule)
+
+    
