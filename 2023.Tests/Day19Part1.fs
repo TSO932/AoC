@@ -1,6 +1,5 @@
 namespace _2023.Tests
 
-open System
 open NUnit.Framework
 open _2023
 
