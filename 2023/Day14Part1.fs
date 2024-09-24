@@ -4,6 +4,10 @@ open System
 
 module Day14Part1 =
 
+    let rotateGridBy90DegreesAnticlockwise grid =
+        let height, width = Array2D.length1 grid, Array2D.length2 grid
+        Array2D.init width height (fun row column -> Array2D.get grid column (width - row - 1))
+
     let rec tilt (input: char[]) =
         
         let shiftAlong (input:string) =
@@ -25,9 +29,7 @@ module Day14Part1 =
         let platform =
             input
             |> array2D
-            |> Day11Part1.rotateGridBy90DegreesToTheRight
-            |> Day11Part1.rotateGridBy90DegreesToTheRight
-            |> Day11Part1.rotateGridBy90DegreesToTheRight
+            |> rotateGridBy90DegreesAnticlockwise
 
         let height = Array2D.length1 platform
 
