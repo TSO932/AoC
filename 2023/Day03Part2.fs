@@ -47,7 +47,7 @@ module Day03Part2 =
                 getNumber(schematic[x - 1, *], y)
                 |> Array.append ( getNumber(schematic[x , *], y) )
                 |> Array.append ( getNumber(schematic[x + 1, *], y) )
-                |> Array.filter (fun i -> i > 0)
+                |> Array.filter ((<) 0)
 
             if Array.length cogs = 2 then
                 cogs[0] * cogs[1]
