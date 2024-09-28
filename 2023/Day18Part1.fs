@@ -5,14 +5,14 @@ open System
 module Day18Part1 =
 
     let parse(input:string) =
-        char input[0], int input[2] - 48, input[6..11] 
+        input.Split ' '
+        |> fun a -> (char a[0], int a[1], a[2][2..7])
 
     let dig(input:seq<int*int*string>, dir:char, dist:int, colour:string) = 
-       
+
         let (x, y) =
             input
-            |> Seq.rev
-            |> Seq.head
+            |> Seq.last
             |> fun (x, y, _) -> (x, y)
 
         let (dx, dy) =
@@ -31,19 +31,6 @@ module Day18Part1 =
         |> Seq.map parse
         |> Seq.fold (fun a (dir, dist, colour) -> dig (a, dir, dist, colour)) [|(0, 0, String.Empty)|]
 
-    let getArray(input:seq<int*int*string>) =
-
-        let locations =
-            input
-            |> Seq.map (fun (x, y, _) -> (x, y) )
-            |> Seq.toArray
-
-        let xMax = locations |> Array.maxBy fst |> fst
-        let xMin = locations |> Array.minBy fst |> fst
-        let yMax = locations |> Array.maxBy snd |> snd
-        let yMin = locations |> Array.minBy snd |> snd
-
-        Array2D.init (1 + yMax - yMin) (1 + xMax - xMin) (fun y x -> locations |> Array.contains (x, -y))
 
     let getArea(input:seq<string>) =
         
@@ -57,7 +44,6 @@ module Day18Part1 =
             |> Seq.toArray
             
         let len = Seq.length points
-
 
         let x(input) = input |> fun (x, _, _) -> x
         let y(input) = input |> fun (_, y, _) -> y
