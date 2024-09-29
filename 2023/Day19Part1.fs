@@ -1,9 +1,6 @@
 ﻿namespace _2023
 
-open System
-
 module Day19Part1 =
-
 
     let mutable accepted = 0
     let mutable rejected = 0

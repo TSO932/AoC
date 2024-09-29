@@ -1,7 +1,5 @@
 ﻿namespace _2023
 
-open System
-
 module Day10Part1 =
 
     let getTiles(input:seq<string>) =      

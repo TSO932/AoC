@@ -1,7 +1,6 @@
 ﻿namespace _2023
 
 module Day18Part1 =
-
     let parse(input:string) =
         input.Split ' '
         |> fun a -> (char a[0], int a[1])

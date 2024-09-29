@@ -1,7 +1,5 @@
 ﻿namespace _2023
 
-open System
-
 module Day16Part1 =
 
     let countTiles(input:seq<string>) = 

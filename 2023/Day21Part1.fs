@@ -1,7 +1,5 @@
 ﻿namespace _2023
 
-open System
-
 module Day21Part1 =
 
     let getPlots = Day10Part1.getTiles

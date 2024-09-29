@@ -1,7 +1,5 @@
 ﻿namespace _2023
 
-open System
-
 module Day11Part1 =
 
     let rotateGridBy90DegreesToTheRight grid = //https://fssnip.net/7Wk

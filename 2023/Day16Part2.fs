@@ -1,9 +1,6 @@
 ﻿namespace _2023
 
-open System
-
 module Day16Part2 =
-
     let countTiles(input:seq<string>) = 
         let mirrorGrid = array2D input
 

@@ -1,7 +1,5 @@
 ﻿namespace _2023
 
-open System
-
 module Day15Part1 =
 
     let runAlgoritm (input: string) =

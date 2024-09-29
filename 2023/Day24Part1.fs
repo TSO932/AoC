@@ -1,7 +1,5 @@
 namespace _2023
 
-open System
-
 module Day24Part1 =
     let getPointAndVelocity(input:string) =
 

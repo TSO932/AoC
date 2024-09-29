@@ -1,6 +1,5 @@
 ﻿namespace _2023
 
-open System
 
 module Day11Part2 =
        
