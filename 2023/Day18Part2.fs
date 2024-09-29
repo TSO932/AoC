@@ -1,12 +1,15 @@
 ﻿namespace _2023
 
-module Day18Part1 =
+open System
+open System.Globalization
+
+module Day18Part2 =
 
     let parse(input:string) =
         input.Split ' '
-        |> fun a -> (char a[0], int a[1])
+        |> fun a -> (char (a[2][7]), Int64.Parse(a[2][2..6], NumberStyles.HexNumber))
 
-    let move(coords:seq<int*int>, dir:char, dist:int) = 
+    let move(coords:seq<int64*int64>, dir:char, dist:int64) = 
 
         let (x, y) =
             coords
@@ -14,10 +17,10 @@ module Day18Part1 =
 
         let (dx, dy) =
             match dir with
-            | 'U' -> (0, 1)
-            | 'D' -> (0, -1)
-            | 'R' -> (1, 0)
-            | _ -> (-1, 0)
+            | '3' -> (0L, 1L)
+            | '1' -> (0L, -1)
+            | '0' -> (1L, 0L)
+            | _ -> (-1L, 0L)
 
         [(x + dx * dist, y + dy * dist)]
         |> Seq.append coords
@@ -60,6 +63,6 @@ module Day18Part1 =
             seq {0 .. len - 1}
             |> Seq.sumBy (fun i -> fst (points[i]) * (snd (points[prev i]) - snd (points[next i])))
             |> abs
-            |> fun x -> x / 2
+            |> fun x -> x / 2L
 
-        area + 1 + perimeterLength / 2
+        area + 1L + perimeterLength / 2L
