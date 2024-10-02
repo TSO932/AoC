@@ -18,13 +18,12 @@ module Day03Part1 =
             let eighthOfPerimeterOfRing = (ring * ring - innerRingArea) / 8
             let lengthInOuterSquare = cell - innerRingArea
 
+            // Worst case, first leg is the same length as the second leg.
             // The nearest points are 1/8, 3/8, 5/8 and 7/8 of the way round the outer square.
 
             seq { 1..2..7 }
             |> Seq.map (fun n -> abs (lengthInOuterSquare - n * eighthOfPerimeterOfRing))
             |> Seq.min
-
-        // Worst case, first leg is the same length as the second leg.
 
         firstLeg + secondLeg
 
