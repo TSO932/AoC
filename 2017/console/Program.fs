@@ -12,5 +12,6 @@ let main argv =
     printfn "Day  3 Part 2: %i" (Day03Part2.getValue (File.ReadAllLines("../input/Day03/input.txt")))
     printfn "Day  4 Part 1: %i" (Day04Part1.countValidPasswords (File.ReadAllLines("../input/Day04/input.txt")))
     printfn "Day  4 Part 2: %i" (Day04Part2.countValidPasswords (File.ReadAllLines("../input/Day04/input.txt")))
+    printfn "Day  5 Part 1: %i" (Day05Part1.escapeMaze (File.ReadAllLines("../input/Day05/input.txt")))
 
     0 // return an integer exit code 
