@@ -10,7 +10,7 @@ type Day04Part1 () =
     [<Test>]
     member this.formatCredentials() =
         let expected = ["hcl:#cfa07d byr:1929 "; " hcl:#ae17e1 iyr:2013 eyr:2024 "; " hcl:#cfa07d eyr:2025 pid:166559648 iyr:2011 "]
-        Assert.AreEqual(expected, Day04Part1.formatCredentials (File.ReadAllLines("../../../data/Day04/test2.txt")))
+        CollectionAssert.AreEqual(expected, Day04Part1.formatCredentials (File.ReadAllLines("../../../data/Day04/test2.txt")))
 
     [<Test>]
     member this.validateCredentialsTrue() =
