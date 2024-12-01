@@ -6,7 +6,7 @@ module Day01Part2 =
     let run (input: seq<string>) =
         
         let parseLine(inputLine:string) =
-            let splits =  inputLine.Split ([|' '|], System.StringSplitOptions.RemoveEmptyEntries)
+            let splits =  inputLine.Split ([|' '|], StringSplitOptions.RemoveEmptyEntries)
             splits[0], splits[1]
 
         let columns =

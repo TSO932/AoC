@@ -6,24 +6,20 @@ module Day01Part1 =
     let run (input: seq<string>) =
         
         let parseLine(inputLine:string) =
-            let splits =  inputLine.Split ([|' '|], System.StringSplitOptions.RemoveEmptyEntries)
+            let splits =  inputLine.Split ([|' '|], StringSplitOptions.RemoveEmptyEntries)
             splits[0], splits[1]
 
         let columns =
             input
             |> Seq.map parseLine
 
-        let columnA =
+        let sortNumbers (f) =
             columns
-            |> Seq.map fst
-            |> Seq.map Int32.Parse
+            |> Seq.map (f >> Int32.Parse)
             |> Seq.sort
 
-        let columnB =
-            columns
-            |> Seq.map snd
-            |> Seq.map Int32.Parse
-            |> Seq.sort
+        let columnA = sortNumbers fst
+        let columnB = sortNumbers snd
 
         (columnA, columnB)
         ||> Seq.zip
