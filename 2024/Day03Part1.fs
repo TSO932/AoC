@@ -14,7 +14,7 @@ module Day03Part1 =
 
     let getInstructions(input:string) =
         Regex.Matches(input, "mul\(\d{1,3},\d{1,3}\)")
-        |> Seq.map (fun a -> a.ToString())
+        |> Seq.map (fun a -> a.Value)
 
     let getSum(input:string) =
         input
