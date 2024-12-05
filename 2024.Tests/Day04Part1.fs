@@ -1,6 +1,5 @@
 namespace _2024.Tests
 
-open System.IO
 open NUnit.Framework
 open _2024
 
