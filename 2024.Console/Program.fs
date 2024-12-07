@@ -10,3 +10,4 @@ printfn "Day  3 Part 2: %i" (Day03Part2.run (File.ReadAllLines("../2024.Input/Da
 printfn "Day  4 Part 1: %i" (Day04Part1.run (File.ReadAllLines("../2024.Input/Day04/input.txt")))
 printfn "Day  4 Part 2: %i" (Day04Part2.run (File.ReadAllLines("../2024.Input/Day04/input.txt")))
 printfn "Day  5 Part 1: %i" (Day05Part1.run (File.ReadAllLines("../2024.Input/Day05/input.txt")))
+printfn "Day  7 Part 1: %i" (Day07Part1.run (File.ReadAllLines("../2024.Input/Day07/input.txt")))
