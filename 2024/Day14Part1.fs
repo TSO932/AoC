@@ -44,6 +44,10 @@ module Day14Part1 =
         |> Array.zeroCreate
         |> Array.fold (fun r _ -> move r) robot
 
+    let moveToEnd2(robot:array<int>) =
+
+        move [|robot[0]; robot[1]; (robot[2] * runCount) % width; (robot[3] * runCount) % height|]
+
     let assignQuadrant(robot:array<int>) =
 
         let middleWidth = width / 2
@@ -66,7 +70,7 @@ module Day14Part1 =
     let runInternal(input:seq<string>) =
 
         input
-        |> Seq.map (parseLine >> moveToEnd >> assignQuadrant)
+        |> Seq.map (parseLine >> moveToEnd2 >> assignQuadrant)
         |> Seq.filter ((<>) "X")
         |> Seq.countBy id
         |> Seq.fold (fun acc (_, x) -> acc * x) 1

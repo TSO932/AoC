@@ -69,3 +69,7 @@ type Day14Part1 () =
             "p=9,5 v=-3,-3" }
     
         Assert.That(Day14Part1.runTest(input), Is.EqualTo(12))
+
+
+        //1208340 too low
+        //42768000 too low
