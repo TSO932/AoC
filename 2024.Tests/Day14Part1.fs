@@ -6,50 +6,52 @@ open _2024
 [<TestFixture>] 
 type Day14Part1 () =
 
+
+    [<DefaultValue>]
+    val mutable b: Day14Part1.Board
+
+    [<SetUp>]
+    member this.SetUp() =
+        this.b <- Day14Part1.Board(Day14Part1.BoardType.Test)
+
     [<Test>]
     member _.ParseLine() = Assert.That(Day14Part1.parseLine("p=0,4 v=3,-3"), Is.EqualTo([|0; 4; 3; -3|]))
 
     [<Test>]
-    member _.Move1() = Assert.That(Day14Part1.move([|2; 4; 2; -3|]), Is.EqualTo([|4; 1; 2; -3|]))
+    member this.Move1() = Assert.That(Day14Part1.move(this.b, [|2; 4; 2; -3|]), Is.EqualTo([|4; 1; 2; -3|]))
 
     [<Test>]
-    member _.Move2() = Assert.That(Day14Part1.move([|4; 1; 2; -3|]), Is.EqualTo([|6; 5; 2; -3|]))
+    member this.Move2() = Assert.That(Day14Part1.move(this.b, [|4; 1; 2; -3|]), Is.EqualTo([|6; 5; 2; -3|]))
 
     [<Test>]
-    member _.Move3() = Assert.That(Day14Part1.move([|6; 5; 2; -3|]), Is.EqualTo([|8; 2; 2; -3|]))
+    member this.Move3() = Assert.That(Day14Part1.move(this.b, [|6; 5; 2; -3|]), Is.EqualTo([|8; 2; 2; -3|]))
 
     [<Test>]
-    member _.Move4() = Assert.That(Day14Part1.move([|8; 2; 2; -3|]), Is.EqualTo([|10; 6; 2; -3|]))
+    member this.Move4() = Assert.That(Day14Part1.move(this.b, [|8; 2; 2; -3|]), Is.EqualTo([|10; 6; 2; -3|]))
 
     [<Test>]
-    member _.Move5() = Assert.That(Day14Part1.move([|10; 6; 2; -3|]), Is.EqualTo([|1; 3; 2; -3|]))
+    member this.Move5() = Assert.That(Day14Part1.move(this.b, [|10; 6; 2; -3|]), Is.EqualTo([|1; 3; 2; -3|]))
 
     [<Test>]
-    member _.RepeatsAt() = Assert.That(Day14Part1.repeatsAt([|2; 4; 1; 1|]), Is.EqualTo(77))
+    member this.AssignQuadrantXV() = Assert.That(Day14Part1.assignQuadrant(this.b, [|1; 3; 1; 1|]), Is.EqualTo("X"))
 
     [<Test>]
-    member _.MoveToEnd() = Assert.That(Day14Part1.moveToEnd([|2; 4; 1; 1|]), Is.EqualTo([|3; 6; 1; 1|]))
+    member this.AssignQuadrantXH() = Assert.That(Day14Part1.assignQuadrant(this.b, [|5; 1; 1; 1|]), Is.EqualTo("X"))
 
     [<Test>]
-    member _.AssignQuadrantXV() = Assert.That(Day14Part1.assignQuadrant([|1; 3; 1; 1|]), Is.EqualTo("X"))
+    member this.AssignQuadrantXVH() = Assert.That(Day14Part1.assignQuadrant(this.b, [|5; 3; 1; 1|]), Is.EqualTo("X"))
 
     [<Test>]
-    member _.AssignQuadrantXH() = Assert.That(Day14Part1.assignQuadrant([|5; 1; 1; 1|]), Is.EqualTo("X"))
+    member this.AssignQuadrantUL() = Assert.That(Day14Part1.assignQuadrant(this.b, [|4; 2; 1; 1|]), Is.EqualTo("UL"))
 
     [<Test>]
-    member _.AssignQuadrantXVH() = Assert.That(Day14Part1.assignQuadrant([|5; 3; 1; 1|]), Is.EqualTo("X"))
+    member this.AssignQuadrantUR() = Assert.That(Day14Part1.assignQuadrant(this.b, [|6; 2; 1; 1|]), Is.EqualTo("UR"))
 
     [<Test>]
-    member _.AssignQuadrantUL() = Assert.That(Day14Part1.assignQuadrant([|4; 2; 1; 1|]), Is.EqualTo("UL"))
+    member this.AssignQuadrantLL() = Assert.That(Day14Part1.assignQuadrant(this.b, [|4; 4; 1; 1|]), Is.EqualTo("LL"))
 
     [<Test>]
-    member _.AssignQuadrantUR() = Assert.That(Day14Part1.assignQuadrant([|6; 2; 1; 1|]), Is.EqualTo("UR"))
-
-    [<Test>]
-    member _.AssignQuadrantLL() = Assert.That(Day14Part1.assignQuadrant([|4; 4; 1; 1|]), Is.EqualTo("LL"))
-
-    [<Test>]
-    member _.AssignQuadrantLR() = Assert.That(Day14Part1.assignQuadrant([|6; 4; 1; 1|]), Is.EqualTo("LR"))
+    member this.AssignQuadrantLR() = Assert.That(Day14Part1.assignQuadrant(this.b, [|6; 4; 1; 1|]), Is.EqualTo("LR"))
 
     [<Test>]
     member _.Example() =
@@ -73,3 +75,6 @@ type Day14Part1 () =
 
         //1208340 too low
         //42768000 too low
+        //224430336 too high
+        //221655456
+        //221655456

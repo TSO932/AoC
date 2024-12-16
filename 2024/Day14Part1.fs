@@ -4,9 +4,27 @@ open System
 
 module Day14Part1 =
 
-    let mutable width = 11
-    let mutable height = 7
-    let mutable runCount = 100
+    type BoardType =
+    | Test = 0
+    | Live = 1
+    
+    type Board(bt:BoardType) =
+        
+        let width =
+            if bt = BoardType.Test then
+                11
+            else
+                101
+
+        let height =
+            if bt = BoardType.Test then
+                7
+            else
+                103
+
+        member this.Width with get() = width
+        member this.Height with get() = height
+        member this.RunCount with get() = 100          
 
     let parseLine(inputLine:string) =
         
@@ -14,7 +32,7 @@ module Day14Part1 =
         |> Seq.map Int32.Parse
         |> Seq.toArray
 
-    let move(robot:array<int>) =
+    let move(b:Board, robot:array<int>) =
         
         let newPos(pos, length) =
             if pos < 0 then
@@ -24,34 +42,16 @@ module Day14Part1 =
             else
                 pos
 
-        [|newPos(robot[0] + robot[2], width); newPos(robot[1] + robot[3], height); robot[2]; robot[3]|]
+        [|newPos(robot[0] + robot[2], b.Width); newPos(robot[1] + robot[3], b.Height); robot[2]; robot[3]|]
 
-    let repeatsAt(robot:array<int>) =
+    let moveToEnd(b:Board, robot:array<int>) =
 
-        let rec repeater(count:int, robot2:array<int>) =
-            if count > 0 && robot = robot2 then
-                count
-            else
-                repeater(count + 1, move robot2)
+        move (b, [|robot[0]; robot[1]; (robot[2] * b.RunCount) % b.Width; (robot[3] * b.RunCount) % b.Height|])
 
-        repeater (0, robot)
+    let assignQuadrant(b:Board, robot:array<int>) =
 
-    let moveToEnd(robot:array<int>) =
-
-        let repeatFrequency = repeatsAt robot 
-
-        runCount % repeatFrequency
-        |> Array.zeroCreate
-        |> Array.fold (fun r _ -> move r) robot
-
-    let moveToEnd2(robot:array<int>) =
-
-        move [|robot[0]; robot[1]; (robot[2] * runCount) % width; (robot[3] * runCount) % height|]
-
-    let assignQuadrant(robot:array<int>) =
-
-        let middleWidth = width / 2
-        let middleHeight = height / 2
+        let middleWidth = b.Width / 2
+        let middleHeight = b.Height / 2
 
         if robot[0] = middleWidth || robot[1] = middleHeight then
             "X"
@@ -67,18 +67,16 @@ module Day14Part1 =
                 else
                     "LR"
 
-    let runInternal(input:seq<string>) =
+    let runInternal(b:Board, input:seq<string>) =
+
+        let move(robot) = moveToEnd(b, robot)
+        let assign(robot) = assignQuadrant(b, robot)
 
         input
-        |> Seq.map (parseLine >> moveToEnd2 >> assignQuadrant)
+        |> Seq.map (parseLine >> move >> assign)
         |> Seq.filter ((<>) "X")
         |> Seq.countBy id
         |> Seq.fold (fun acc (_, x) -> acc * x) 1
 
-    let runTest(input:seq<string>) = runInternal input
-
-    let run(input:seq<string>) =
-
-        let mutable width = 101
-        let mutable height = 103
-        runInternal input
+    let runTest(input:seq<string>) = runInternal (Board(BoardType.Test), input)
+    let run(input:seq<string>) =  runInternal (Board(BoardType.Live), input)
