@@ -1,7 +1,5 @@
 namespace _2024
 
-open System
-
 module Day14Part2 =
 
     let move(robot) = Day14Part1.move(Day14Part1.Board(Day14Part1.BoardType.Live), robot)
